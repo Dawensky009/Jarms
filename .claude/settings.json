@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node --version)",
+      "PowerShell(npm --version)",
+      "PowerShell(npx --version)",
+      "PowerShell(npm install)",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"d:\\\\Project\\\\Jarms\\\\public\")",
+      "PowerShell(Copy-Item \"d:\\\\Project\\\\Jarms\\\\Images\\\\logo_Jarms.png\" \"d:\\\\Project\\\\Jarms\\\\public\\\\logo_Jarms.png\" -Force)",
+      "PowerShell(Copy-Item \"d:\\\\Project\\\\Jarms\\\\Ressources\\\\Template.webp\" \"d:\\\\Project\\\\Jarms\\\\public\\\\sample-1.webp\" -Force)",
+      "PowerShell(Copy-Item \"d:\\\\Project\\\\Jarms\\\\Ressources\\\\Template 2.webp\" \"d:\\\\Project\\\\Jarms\\\\public\\\\sample-2.webp\" -Force)",
+      "PowerShell(npm run build)",
+      "PowerShell(npm run dev)",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_close",
+      "PowerShell(Remove-Item \"d:\\\\Project\\\\Jarms\\\\hero.jpeg\",\"d:\\\\Project\\\\Jarms\\\\fullpage.jpeg\",\"d:\\\\Project\\\\Jarms\\\\work.jpeg\",\"d:\\\\Project\\\\Jarms\\\\work2.jpeg\",\"d:\\\\Project\\\\Jarms\\\\mobile-hero.jpeg\" -Force -ErrorAction SilentlyContinue; Remove-Item \"d:\\\\Project\\\\Jarms\\\\.playwright-mcp\" -Recurse -Force -ErrorAction SilentlyContinue; \"Cleaned. Project root:\"; Get-ChildItem \"d:\\\\Project\\\\Jarms\" -Force | Where-Object { $_.Name -notin @\\('node_modules','.next'\\) } | Select-Object Name)",
+      "mcp__playwright__browser_evaluate",
+      "Bash(export PYTHONIOENCODING=utf-8 PYTHONUTF8=1)",
+      "Bash(python \"Skills/ui-ux-pro-max/scripts/search.py\" \"scroll animation parallax trust credibility social proof\" --domain ux -n 5)",
+      "Bash(python \"Skills/ui-ux-pro-max/scripts/search.py\" \"minimal hero trust social-proof logos stats\" --domain landing -n 3)",
+      "PowerShell(\"Deleted Insights.tsx\")",
+      "PowerShell(\"Deleted Parallax.tsx\")",
+      "PowerShell(winget install --id Gyan.FFmpeg --exact --accept-package-agreements --accept-source-agreements --disable-interactivity --silent)",
+      "PowerShell(\"Cleaned. Waiting on ffmpeg install...\")",
+      "Bash(break)"
+    ]
+  }
+}
