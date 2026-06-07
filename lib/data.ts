@@ -40,6 +40,10 @@ export const TILES: Tile[] = [
   { id: "car", title: "Car Link Up", client: "Automotive", category: "Event", video: "/videos/car-link-up.mp4", tone: "from-[#2a1840] to-[#0e1116]" },
   { id: "cdm", title: "CDM", client: "Commercial spot", category: "Commercial", video: "/videos/cdm.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
   { id: "star", title: "Star English", client: "Education", category: "Corporate", video: "/videos/star-english.mp4", tone: "from-[#123b3a] to-[#0e1116]" },
+  { id: "makaya", title: "Makaya", client: "Brand film", category: "Brand", video: "/videos/makaya.mp4", tone: "from-[#2a1840] to-[#0e1116]" },
+  { id: "pastor-jv", title: "Pastor JV", client: "Auto consulting", category: "Corporate", video: "/videos/pastor-jv.mp4", tone: "from-[#13314a] to-[#0e1116]" },
+  { id: "shake-up", title: "Shake Up", client: "Event promo", category: "Event", video: "/videos/shake-up.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
+  { id: "blind-eye", title: "The Blind Eye", client: "Brand film", category: "Brand", video: "/videos/the-blind-eye.mp4", tone: "from-[#3a2c10] to-[#0e1116]" },
 ];
 
 /* ---------------- Services (dark, Delight-style rows) ---------------- */

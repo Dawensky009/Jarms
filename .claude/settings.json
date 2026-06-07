@@ -25,7 +25,8 @@
       "PowerShell(\"Deleted Parallax.tsx\")",
       "PowerShell(winget install --id Gyan.FFmpeg --exact --accept-package-agreements --accept-source-agreements --disable-interactivity --silent)",
       "PowerShell(\"Cleaned. Waiting on ffmpeg install...\")",
-      "Bash(break)"
+      "Bash(break)",
+      "PowerShell(\"Cleaned.\")"
     ]
   }
 }

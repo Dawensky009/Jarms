@@ -45,7 +45,7 @@ export function Navbar() {
 
           <div className="hidden md:block">
             <Button href="#contact" variant="primary" className="px-5 py-2.5">
-              Get a Quote
+              Get a Video / Website
             </Button>
           </div>
 
@@ -75,7 +75,7 @@ export function Navbar() {
                 </a>
               ))}
               <Button href="#contact" variant="primary" className="mt-2 w-full">
-                Get a Quote
+                Get a Video / Website
               </Button>
             </div>
           </div>
