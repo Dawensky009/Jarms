@@ -90,7 +90,7 @@ export const SERVICES: Service[] = [
     blurb:
       "Show the product in its best light — clean reveals, feature highlights and lifestyle context that drives the click.",
     bullets: ["Studio & lifestyle", "Feature highlights", "E-commerce ready"],
-    video: "/videos/car-link-up.mp4",
+    video: "/videos/shake-up.mp4",
     tone: "from-[#123b3a] to-[#0e1116]",
   },
   {
