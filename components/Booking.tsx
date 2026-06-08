@@ -16,12 +16,11 @@ export function Booking() {
               Book a call
             </p>
             <h2 className="mt-4 text-section font-bold text-ink">
-              Let&apos;s map your next campaign.
+              Let&apos;s talk — it&apos;s free and it&apos;s quick.
             </h2>
             <p className="mt-5 max-w-md text-ink-muted">
-              Grab a free 20-minute discovery call. We&apos;ll talk goals,
-              timelines and ideas — you&apos;ll leave with a clear next step, no
-              pressure.
+              Book a free 20-minute call. Bring your idea — you&apos;ll walk away
+              with a clear plan and a price. No pressure, no obligation.
             </p>
             <div className="mt-8 flex items-center gap-3 text-ink-soft">
               <CalendarClock className="h-5 w-5 text-gold-deep" />

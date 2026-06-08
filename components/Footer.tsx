@@ -13,8 +13,8 @@ export function Footer() {
         <Reveal className="border-b border-white/10 pb-14">
           <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
             <h2 className="max-w-2xl text-section font-bold">
-              Ready to make something{" "}
-              <span className="text-gradient-gold">unforgettable?</span>
+              Right now, your competitor is posting. Let&apos;s get you{" "}
+              <span className="text-gradient-gold">ahead.</span>
             </h2>
             <div className="flex flex-wrap gap-3">
               <Button href="#contact" variant="primary">

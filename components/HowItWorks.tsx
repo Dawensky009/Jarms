@@ -17,7 +17,7 @@ export function HowItWorks() {
             How it works
           </p>
           <h2 className="mt-4 text-section font-bold text-ink">
-            From brief to launch in four moves.
+            From idea to posted — in 4 easy steps.
           </h2>
         </Reveal>
 

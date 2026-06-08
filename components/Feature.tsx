@@ -16,9 +16,10 @@ export function Feature() {
           <Reveal direction="left">
             <Quote className="h-10 w-10 text-gold" />
             <p className="mt-6 font-display text-2xl font-semibold leading-snug text-ink sm:text-3xl">
-              Great marketing isn&apos;t louder — it&apos;s more{" "}
-              <span className="text-gold-deep">memorable</span>. We pair AI speed
-              with human craft so your brand earns attention and keeps it.
+              Most businesses don&apos;t have a quality problem — they have a{" "}
+              <span className="text-gold-deep">&ldquo;forgettable&rdquo;</span>{" "}
+              problem. We make the kind of video people actually stop, watch and
+              remember.
             </p>
 
             <div className="mt-7 flex items-center gap-3 text-sm text-ink-muted">

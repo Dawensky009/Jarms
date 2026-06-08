@@ -25,7 +25,7 @@ export function Hero() {
           <br />
           your brand{" "}
           <Typewriter
-            words={["move", "sell", "convert", "go viral", "grow"]}
+            words={["sell", "go viral", "get booked", "stand out", "grow"]}
             className="text-gold-deep"
           />
         </motion.h1>
@@ -36,8 +36,9 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.1, ease }}
           className="mx-auto mt-6 max-w-xl text-base text-ink-muted sm:text-lg"
         >
-          Scroll-stopping ad films and high-converting websites — crafted end to
-          end for brands that refuse to blend in.
+          We make the videos and websites that get your business seen — and turn
+          that attention into paying customers. Without the wait or the big-agency
+          price tag.
         </motion.p>
 
         <motion.div

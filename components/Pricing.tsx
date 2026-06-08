@@ -8,10 +8,10 @@ export function Pricing() {
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <Reveal className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
-            Choose the plan that fits you
+            Simple, honest pricing
           </p>
           <h2 className="mx-auto mt-4 max-w-2xl text-section font-bold text-ink">
-            Power up your brand — pick a plan that scales with you.
+            No hidden fees. Pick what you need — upgrade anytime.
           </h2>
         </Reveal>
 

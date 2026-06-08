@@ -26,18 +26,15 @@ export function Navbar() {
         }`}
       >
         <nav className="container-px mx-auto flex h-16 max-w-container items-center justify-between sm:h-20">
-          <a href="#top" className="flex items-center gap-2.5" aria-label="Jarms Marketing home">
+          <a href="#top" className="flex items-center" aria-label="Jarms Marketing home">
             <Image
               src="/logo_Jarms.png"
               alt="Jarms Marketing"
               width={120}
               height={120}
               priority
-              className="h-9 w-9 rounded-lg object-cover ring-1 ring-ink/5"
+              className="h-10 w-10 rounded-xl object-cover ring-1 ring-ink/5"
             />
-            <span className="font-display text-2xl font-extrabold tracking-tight text-ink">
-              Jarms
-            </span>
           </a>
 
           <div className="hidden items-center gap-8 md:flex">

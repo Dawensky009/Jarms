@@ -52,8 +52,8 @@ export function ContactForm() {
             </p>
             <h2 className="mt-4 text-section font-bold text-ink">Tell us about your project.</h2>
             <p className="mt-5 max-w-md text-ink-muted">
-              Share a few details and we&apos;ll come back within one business day
-              with ideas and a tailored quote.
+              Tell us what you need — we&apos;ll reply within one business day with
+              ideas and a price. It&apos;s free, with no obligation.
             </p>
 
             <a

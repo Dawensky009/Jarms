@@ -66,12 +66,11 @@ export function Services() {
             What we do
           </p>
           <h2 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight sm:text-6xl">
-            Services built to make{" "}
-            <span className="text-gold">brands move</span> with AI
+            Get seen. Get <span className="text-gold">booked</span>. Get paid.
           </h2>
           <p className="mt-5 max-w-xl text-white/55">
-            From the first hook to the final pixel — full-stack creative,
-            produced fast and finished with taste.
+            Ads, brand films, product videos and websites — made for businesses
+            that want customers, not just &ldquo;content.&rdquo;
           </p>
         </Reveal>
 

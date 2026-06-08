@@ -71,7 +71,7 @@ export const SERVICES: Service[] = [
     title: "AI Ad",
     highlight: "Videos",
     blurb:
-      "Scroll-stopping short-form ads engineered for social. Hooks, captions and pacing tuned to convert viewers into customers.",
+      "The ad that stops the thumb. We grab attention in the first 3 seconds, so people watch to the end and tap “buy” instead of scrolling past.",
     bullets: ["Reels, TikTok & Shorts", "Hook-first scripting", "A/B-ready variants"],
     video: "/videos/anna-bbq.mp4",
     tone: "from-[#3a2c10] to-[#0e1116]",
@@ -82,7 +82,7 @@ export const SERVICES: Service[] = [
     title: "Commercial &",
     highlight: "Brand Films",
     blurb:
-      "Cinematic brand commercials with story, motion and sound design that make people stop, watch and remember you.",
+      "The film that makes people remember your name. Real story, motion and sound that make your business look as good as it actually is.",
     bullets: ["Creative direction", "Motion & sound design", "Broadcast-ready"],
     video: "/videos/cdm.mp4",
     tone: "from-[#13314a] to-[#0e1116]",
@@ -93,7 +93,7 @@ export const SERVICES: Service[] = [
     title: "Product",
     highlight: "Videos",
     blurb:
-      "Show the product in its best light — clean reveals, feature highlights and lifestyle context that drives the click.",
+      "Show your product like it’s worth every cent. Clean shots and real-life moments that answer “why should I buy this?” and turn lookers into buyers.",
     bullets: ["Studio & lifestyle", "Feature highlights", "E-commerce ready"],
     video: "/videos/shake-up.mp4",
     tone: "from-[#123b3a] to-[#0e1116]",
@@ -104,7 +104,7 @@ export const SERVICES: Service[] = [
     title: "Website",
     highlight: "Creation",
     blurb:
-      "Fast, modern, high-converting websites — like this one. Strategy, design, build and launch, fully done for you.",
+      "A website that sells for you 24/7 — fast, easy to use, and done for you. The one you’re reading right now? We built it.",
     bullets: ["Conversion-focused design", "Next.js performance", "SEO & analytics"],
     video: "/videos/astreya.mp4",
     tone: "from-[#2a1840] to-[#0e1116]",
@@ -121,10 +121,10 @@ export type Step = {
 };
 
 export const STEPS: Step[] = [
-  { n: "1", title: "Brief", blurb: "We learn your brand, goal and audience in a quick discovery call.", color: "bg-step-violet" },
-  { n: "2", title: "Concept", blurb: "AI accelerates scripts and storyboards — refined by our team.", color: "bg-step-green" },
-  { n: "3", title: "Produce", blurb: "We shoot, generate and edit — motion, sound and colour dialled in.", color: "bg-step-blue" },
-  { n: "4", title: "Deliver", blurb: "Platform-ready exports, fast revisions and assets that perform.", color: "bg-step-pink" },
+  { n: "1", title: "Tell us the goal", blurb: "A quick call or message. You tell us what you want — we take it from there.", color: "bg-step-violet" },
+  { n: "2", title: "We plan it", blurb: "We turn your idea into a script and a look. AI makes it fast; we make it good.", color: "bg-step-green" },
+  { n: "3", title: "We make it", blurb: "We shoot, edit and polish until it looks exactly how you pictured it.", color: "bg-step-blue" },
+  { n: "4", title: "You post it", blurb: "Ready-to-post files in days — with changes until you’re happy.", color: "bg-step-pink" },
 ];
 
 /* ---------------- Pricing ---------------- */
@@ -144,7 +144,7 @@ export const PLANS: Plan[] = [
     name: "Starter",
     price: "$490",
     cadence: "per video",
-    tagline: "For one-off ads & social cuts",
+    tagline: "Perfect for a single ad or promo",
     features: [
       "1 finished video",
       "Up to 30 seconds",
@@ -157,7 +157,7 @@ export const PLANS: Plan[] = [
     name: "Growth",
     price: "$1,900",
     cadence: "per month",
-    tagline: "For brands shipping content weekly",
+    tagline: "Most popular — for businesses posting every week",
     features: [
       "4 videos / month",
       "Ad scripting & strategy",
@@ -172,7 +172,7 @@ export const PLANS: Plan[] = [
     name: "Studio",
     price: "Custom",
     cadence: "video + web",
-    tagline: "Full campaigns & website builds",
+    tagline: "Video + website, handled together",
     features: [
       "Everything in Growth",
       "Website design & build",
@@ -211,7 +211,7 @@ export const CLIENTS = [
 export type Testimonial = { quote: string; name: string; role: string };
 
 export const TESTIMONIALS: Testimonial[] = [
-  { quote: "Jarms turned our launch around in days, not weeks. The first cut already looked like a finished campaign.", name: "Sofia Marchetti", role: "Founder, Aurum Coffee" },
-  { quote: "Our product video tripled engagement on launch day. The pacing and hooks are on another level.", name: "David Okafor", role: "CMO, Nova Audio" },
-  { quote: "They built our website and our promo reel in one go. One partner, zero friction, real results.", name: "Camille Roy", role: "Director, Pulse Events" },
+  { quote: "We needed a launch video fast, and they delivered in days. The first version was already better than what our last agency took weeks to make.", name: "Sofia Marchetti", role: "Founder, Aurum Coffee" },
+  { quote: "Our product video got more saves and comments than anything we'd posted all year. People actually watched the whole thing.", name: "David Okafor", role: "Owner, Nova Audio" },
+  { quote: "They did our website and our event video together — one team, no back-and-forth, and it just worked. We'll be back.", name: "Camille Roy", role: "Director, Pulse Events" },
 ];
