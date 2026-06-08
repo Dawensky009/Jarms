@@ -30,10 +30,10 @@ export function Navbar() {
             <Image
               src="/logo_Jarms.png"
               alt="Jarms Marketing"
-              width={120}
-              height={120}
+              width={160}
+              height={160}
               priority
-              className="h-10 w-10 rounded-xl object-cover ring-1 ring-ink/5"
+              className="h-12 w-12 rounded-xl object-cover ring-1 ring-ink/5 sm:h-14 sm:w-14"
             />
           </a>
 
