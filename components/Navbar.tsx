@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,11 +26,18 @@ export function Navbar() {
         }`}
       >
         <nav className="container-px mx-auto flex h-16 max-w-container items-center justify-between sm:h-20">
-          <a href="#top" className="flex items-baseline" aria-label="Jarms Marketing home">
+          <a href="#top" className="flex items-center gap-2.5" aria-label="Jarms Marketing home">
+            <Image
+              src="/logo_Jarms.png"
+              alt="Jarms Marketing"
+              width={120}
+              height={120}
+              priority
+              className="h-9 w-9 rounded-lg object-cover ring-1 ring-ink/5"
+            />
             <span className="font-display text-2xl font-extrabold tracking-tight text-ink">
               Jarms
             </span>
-            <span className="ml-0.5 h-2 w-2 self-end rounded-full bg-gold" />
           </a>
 
           <div className="hidden items-center gap-8 md:flex">
@@ -44,7 +53,8 @@ export function Navbar() {
           </div>
 
           <div className="hidden md:block">
-            <Button href="#contact" variant="primary" className="px-5 py-2.5">
+            <Button href={SITE.whatsappUrl} variant="primary" className="px-5 py-2.5">
+              <WhatsAppIcon className="h-4 w-4" />
               Get a Video / Website
             </Button>
           </div>
@@ -74,7 +84,8 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <Button href="#contact" variant="primary" className="mt-2 w-full">
+              <Button href={SITE.whatsappUrl} variant="primary" className="mt-2 w-full">
+                <WhatsAppIcon className="h-4 w-4" />
                 Get a Video / Website
               </Button>
             </div>

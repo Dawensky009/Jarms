@@ -2,15 +2,17 @@
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { SITE } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 import { Typewriter } from "@/components/ui/Typewriter";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-white pt-32 sm:pt-44">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(55%_55%_at_50%_0%,rgba(242,106,43,0.10),transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(55%_55%_at_50%_0%,rgba(241,172,35,0.14),transparent_70%)]" />
 
       <div className="container-px relative z-10 mx-auto max-w-3xl text-center">
         <motion.h1
@@ -44,7 +46,8 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.2, ease }}
           className="mt-9 flex items-center justify-center"
         >
-          <Button href="#contact" variant="primary" arrow>
+          <Button href={SITE.whatsappUrl} variant="primary">
+            <WhatsAppIcon className="h-5 w-5" />
             Get a Free Quote
           </Button>
         </motion.div>

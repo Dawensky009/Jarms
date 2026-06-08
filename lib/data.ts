@@ -4,6 +4,11 @@ export const SITE = {
   name: "Jarms Marketing",
   tagline: "AI-powered video & web for brands that refuse to blend in.",
   email: "hello@jarmsmarketing.com",
+  // WhatsApp (international format, no +/spaces) — drives the main CTAs
+  whatsapp: "18299745141",
+  whatsappUrl:
+    "https://wa.me/18299745141?text=" +
+    encodeURIComponent("Hi Jarms 👋 I'd like a video / website."),
   // TODO: replace with the agency's real Calendly scheduling link
   calendlyUrl: "https://calendly.com/jarms-marketing/discovery-call",
   socials: [

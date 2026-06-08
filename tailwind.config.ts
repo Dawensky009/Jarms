@@ -9,12 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // brand accent — Lucrio-style orange (kept under the `gold` key so the
-        // single accent token still drives the whole site; not yellow)
+        // brand accent — the exact yellow from the Jarms logo background (#F1AC23).
+        // `deep` is a darker amber tuned for accent text on light backgrounds.
         gold: {
-          DEFAULT: "#F26A2B",
-          deep: "#D8551B",
-          soft: "#FB8C52",
+          DEFAULT: "#F1AC23",
+          deep: "#9C6A07",
+          soft: "#F7C95A",
         },
         ink: {
           DEFAULT: "#14161D",

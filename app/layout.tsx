@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
 
 const siteUrl = "https://jarmsmarketing.com";
 
@@ -58,6 +59,7 @@ export default function RootLayout({
       <body className="antialiased">
         <CustomCursor />
         {children}
+        <WhatsAppFab />
       </body>
     </html>
   );

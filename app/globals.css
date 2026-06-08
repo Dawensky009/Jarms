@@ -8,8 +8,8 @@
   --font-display: "Poppins", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
 
-  --orange: #f26a2b;
-  --orange-deep: #d8551b;
+  --gold: #f1ac23;
+  --gold-deep: #9c6a07;
   --ink: #14161d;
   --paper: #ffffff;
   --mist: #f4f4f6;
@@ -30,8 +30,8 @@
   }
 
   ::selection {
-    background-color: var(--orange);
-    color: #ffffff;
+    background-color: var(--gold);
+    color: var(--ink);
   }
 
   h1, h2, h3, h4 {
@@ -67,8 +67,8 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  .text-gradient-orange {
-    background: linear-gradient(180deg, #fb8c52 0%, #f26a2b 55%, #d8551b 100%);
+  .text-gradient-gold {
+    background: linear-gradient(180deg, #f7c95a 0%, #f1ac23 55%, #9c6a07 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -86,7 +86,7 @@
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--orange);
+  background: var(--gold);
 }
 
 /* hide the native cursor only when the JS custom cursor is active (desktop) */
