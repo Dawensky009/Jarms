@@ -11,8 +11,12 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-white pt-32 sm:pt-44">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-[radial-gradient(55%_55%_at_50%_0%,rgba(241,172,35,0.14),transparent_70%)]" />
+    <section id="top" className="grain relative overflow-hidden bg-white pt-32 sm:pt-44">
+      {/* layered ambient glow — a focused bloom over a wide, soft wash for depth */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[30rem]">
+        <div className="absolute left-1/2 top-0 h-72 w-[46rem] max-w-[120vw] -translate-x-1/2 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(241,172,35,0.22),transparent_70%)]" />
+        <div className="absolute left-1/2 top-20 h-96 w-[64rem] max-w-[140vw] -translate-x-1/2 bg-[radial-gradient(50%_50%_at_50%_0%,rgba(241,172,35,0.06),transparent_75%)]" />
+      </div>
 
       <div className="container-px relative z-10 mx-auto max-w-3xl text-center">
         <motion.h1

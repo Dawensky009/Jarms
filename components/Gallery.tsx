@@ -4,31 +4,37 @@ import { useState } from "react";
 import { Play } from "lucide-react";
 import { TILES, type Tile } from "@/lib/data";
 import { VideoModal } from "@/components/ui/VideoModal";
+import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
 
 function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }) {
+  const hover = useHoverPlay();
+
   return (
     <button
       onClick={() => onPlay(tile)}
+      onMouseEnter={hover.onMouseEnter}
+      onMouseLeave={hover.onMouseLeave}
       aria-label={`Play ${tile.title} for ${tile.client}`}
-      className={`group relative aspect-video w-[240px] flex-none cursor-pointer overflow-hidden rounded-2xl border border-ink/5 bg-gradient-to-br sm:w-[320px] ${tile.tone}`}
+      className={`group relative mr-4 aspect-video w-[260px] flex-none cursor-pointer overflow-hidden rounded-2xl border border-ink/5 bg-gradient-to-br shadow-sm transition-[transform,box-shadow] duration-300 ease-out-strong will-change-transform hover:-translate-y-1 hover:shadow-2xl hover:shadow-night/25 active:scale-[0.99] sm:w-[340px] ${tile.tone}`}
     >
-      {/* first frame as thumbnail (full video plays in the lightbox) */}
+      {/* poster paints instantly; the video itself loads only on hover (preload=none) */}
       <video
-        src={`${tile.video}#t=1`}
+        ref={hover.videoRef}
+        src={tile.video}
+        poster={posterFor(tile.video)}
         muted
+        loop
         playsInline
-        preload="metadata"
+        preload="none"
         tabIndex={-1}
-        onLoadedMetadata={(e) => {
-          try {
-            e.currentTarget.currentTime = 1;
-          } catch {}
-        }}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-[1.04]"
       />
+      {/* legibility gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/10 to-transparent" />
+      {/* gold ring blooms on hover */}
+      <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/0 transition-colors duration-300 group-hover:ring-gold/60" />
 
-      <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-night/40 px-3 py-1 text-[0.7rem] text-white/85 backdrop-blur-sm">
+      <span className="absolute left-3 top-3 rounded-full border border-white/20 bg-night/40 px-3 py-1 text-[0.7rem] font-medium text-white/85 backdrop-blur-sm">
         {tile.category}
       </span>
 
@@ -37,7 +43,7 @@ function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }
           <p className="font-display text-base font-semibold text-white">{tile.title}</p>
           <p className="text-xs text-white/60">{tile.client}</p>
         </div>
-        <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <span className="flex h-10 w-10 flex-none translate-y-1 items-center justify-center rounded-full bg-gold text-ink opacity-0 shadow-lg transition-[opacity,transform] duration-300 ease-out-strong group-hover:translate-y-0 group-hover:opacity-100">
           <Play className="ml-0.5 h-4 w-4 fill-current" />
         </span>
       </div>
@@ -56,11 +62,12 @@ function MarqueeRow({
   durationClass: string;
   onPlay: (t: Tile) => void;
 }) {
+  // doubled list + per-tile right margin → translateX(-50%) loops with no seam
   const loop = [...tiles, ...tiles];
   return (
     <div className="flex overflow-hidden">
       <div
-        className={`flex w-max gap-4 pr-4 animate-marquee hover:[animation-play-state:paused] ${durationClass} ${
+        className={`flex w-max animate-marquee hover:[animation-play-state:paused] ${durationClass} ${
           reverse ? "[animation-direction:reverse]" : ""
         }`}
       >
@@ -78,7 +85,11 @@ export function Gallery() {
 
   return (
     <section id="work" className="overflow-hidden bg-white py-10 sm:py-12">
-      <div className="space-y-4">
+      {/* soft edge fades so tiles dissolve in/out instead of hard-cutting at the rim */}
+      <div className="relative space-y-4">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-28" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-28" />
+
         <MarqueeRow tiles={TILES} durationClass="[animation-duration:50s]" onPlay={setActive} />
         <MarqueeRow tiles={row2} reverse durationClass="[animation-duration:62s]" onPlay={setActive} />
       </div>

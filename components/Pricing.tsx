@@ -19,10 +19,10 @@ export function Pricing() {
           {PLANS.map((plan) => (
             <RevealItem key={plan.name}>
               <div
-                className={`relative flex h-full flex-col rounded-4xl border p-8 ${
+                className={`relative flex h-full flex-col rounded-4xl border p-8 transition-[transform,box-shadow,border-color] duration-300 ease-out-strong hover:-translate-y-1.5 ${
                   plan.popular
-                    ? "border-gold/50 bg-white shadow-[0_30px_60px_-30px_rgba(229,168,35,0.55)] lg:-mt-4 lg:pb-12"
-                    : "border-ink/10 bg-mist"
+                    ? "border-gold/50 bg-white shadow-[0_30px_60px_-30px_rgba(229,168,35,0.55)] hover:shadow-[0_40px_80px_-30px_rgba(229,168,35,0.7)] lg:-mt-4 lg:pb-12"
+                    : "border-ink/10 bg-mist hover:border-ink/15 hover:bg-white hover:shadow-2xl hover:shadow-ink/10"
                 }`}
               >
                 {plan.popular && (

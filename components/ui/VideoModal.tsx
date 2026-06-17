@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Film } from "lucide-react";
+import { posterFor } from "@/components/ui/useHoverPlay";
 
 export type ModalProject = {
   title: string;
@@ -64,7 +65,7 @@ export function VideoModal({
               <button
                 onClick={onClose}
                 aria-label="Close video"
-                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 text-white/80 transition-colors hover:border-gold hover:text-gold"
+                className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 text-white/80 transition-[color,border-color,transform] duration-200 ease-out-strong hover:border-gold hover:text-gold active:scale-[0.92]"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -75,6 +76,7 @@ export function VideoModal({
                 <video
                   className="h-full w-full bg-black"
                   src={project.videoSrc}
+                  poster={posterFor(project.videoSrc)}
                   controls
                   autoPlay
                   playsInline

@@ -16,7 +16,7 @@ export function Testimonials() {
         <RevealGroup className="mt-12 grid gap-6 md:grid-cols-3">
           {TESTIMONIALS.map((t) => (
             <RevealItem key={t.name}>
-              <figure className="flex h-full flex-col rounded-3xl border border-ink/10 bg-mist p-7">
+              <figure className="flex h-full flex-col rounded-3xl border border-ink/10 bg-mist p-7 transition-[transform,box-shadow,border-color] duration-300 ease-out-strong hover:-translate-y-1.5 hover:border-ink/15 hover:bg-white hover:shadow-2xl hover:shadow-ink/10">
                 <div className="flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-gold text-gold" />

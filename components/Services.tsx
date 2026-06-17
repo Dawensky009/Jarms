@@ -6,6 +6,7 @@ import { SERVICES, type Service } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
 import { DripDivider } from "@/components/ui/DripDivider";
 import { VideoModal } from "@/components/ui/VideoModal";
+import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
 
 function ServiceVisual({
   service,
@@ -14,6 +15,8 @@ function ServiceVisual({
   service: Service;
   onPlay: (s: Service) => void;
 }) {
+  const hover = useHoverPlay();
+
   if (!service.video) {
     return (
       <div className="relative aspect-[4/3] overflow-hidden rounded-4xl border border-white/10">
@@ -24,21 +27,21 @@ function ServiceVisual({
   return (
     <button
       onClick={() => onPlay(service)}
+      onMouseEnter={hover.onMouseEnter}
+      onMouseLeave={hover.onMouseLeave}
       aria-label={`Play ${service.title} ${service.highlight}`}
-      className={`group relative block aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-4xl border border-white/10 bg-gradient-to-br ${service.tone}`}
+      className={`group relative block aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-4xl border border-white/10 bg-gradient-to-br shadow-xl shadow-night/40 transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1 hover:shadow-2xl hover:shadow-night/60 active:scale-[0.99] ${service.tone}`}
     >
       <video
-        src={`${service.video}#t=1`}
+        ref={hover.videoRef}
+        src={service.video}
+        poster={posterFor(service.video)}
         muted
+        loop
         playsInline
-        preload="metadata"
+        preload="none"
         tabIndex={-1}
-        onLoadedMetadata={(e) => {
-          try {
-            e.currentTarget.currentTime = 1;
-          } catch {}
-        }}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out-strong group-hover:scale-105"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-night/60 to-transparent" />
       <span className="absolute inset-0 flex items-center justify-center">

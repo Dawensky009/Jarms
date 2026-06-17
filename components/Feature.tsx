@@ -5,9 +5,13 @@ import { Quote, Play } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { VideoModal } from "@/components/ui/VideoModal";
+import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
+
+const FEATURE_VIDEO = "/videos/star-english.mp4";
 
 export function Feature() {
   const [open, setOpen] = useState(false);
+  const hover = useHoverPlay();
 
   return (
     <section className="bg-mist">
@@ -38,21 +42,21 @@ export function Feature() {
           <Reveal direction="right">
             <button
               onClick={() => setOpen(true)}
+              onMouseEnter={hover.onMouseEnter}
+              onMouseLeave={hover.onMouseLeave}
               aria-label="Play brand film"
-              className="group relative block aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-4xl border border-ink/10 bg-night"
+              className="group relative block aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-4xl border border-ink/10 bg-night shadow-xl shadow-ink/10 transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1 hover:shadow-2xl hover:shadow-ink/20 active:scale-[0.99]"
             >
               <video
-                src="/videos/star-english.mp4#t=1"
+                ref={hover.videoRef}
+                src={FEATURE_VIDEO}
+                poster={posterFor(FEATURE_VIDEO)}
                 muted
+                loop
                 playsInline
-                preload="metadata"
+                preload="none"
                 tabIndex={-1}
-                onLoadedMetadata={(e) => {
-                  try {
-                    e.currentTarget.currentTime = 1;
-                  } catch {}
-                }}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out-strong group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-night/15" />
               <span className="absolute inset-0 flex items-center justify-center">
@@ -68,7 +72,7 @@ export function Feature() {
       <VideoModal
         project={
           open
-            ? { title: "Brand Film", client: "Jarms Marketing", videoSrc: "/videos/star-english.mp4" }
+            ? { title: "Brand Film", client: "Jarms Marketing", videoSrc: FEATURE_VIDEO }
             : null
         }
         onClose={() => setOpen(false)}

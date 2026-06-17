@@ -30,9 +30,9 @@ export function HowItWorks() {
               const Icon = ICONS[i] ?? Lightbulb;
               return (
                 <RevealItem key={step.n}>
-                  <div className="flex flex-col items-center text-center">
+                  <div className="group flex flex-col items-center text-center">
                     <span
-                      className={`relative flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg ${step.color}`}
+                      className={`relative flex h-16 w-16 items-center justify-center rounded-2xl text-white shadow-lg transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5 group-hover:scale-105 ${step.color}`}
                     >
                       <Icon className="h-7 w-7" />
                     </span>
