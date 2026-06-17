@@ -1,16 +1,15 @@
 import { Check } from "lucide-react";
 import { PLANS } from "@/lib/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="bg-white">
+    <section id="pricing" className="bg-paper">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
-        <Reveal className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
-            Simple, honest pricing
-          </p>
-          <h2 className="mx-auto mt-4 max-w-2xl text-section font-bold text-ink">
+        <Reveal className="max-w-2xl">
+          <Eyebrow index="04">Simple, honest pricing</Eyebrow>
+          <h2 className="mt-5 max-w-2xl text-section font-bold text-ink">
             No hidden fees. Pick what you need — upgrade anytime.
           </h2>
         </Reveal>

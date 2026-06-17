@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Plus, ShieldCheck } from "lucide-react";
 import { FAQS } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export function Faq() {
   // single-open accordion — keeps focus on one answer at a time
@@ -14,10 +15,8 @@ export function Faq() {
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr]">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
-              Good to know
-            </p>
-            <h2 className="mt-4 text-section font-bold text-ink">
+            <Eyebrow index="05">Good to know</Eyebrow>
+            <h2 className="mt-5 text-section font-bold text-ink">
               Questions?
               <br className="hidden sm:block" /> We&apos;ve got answers.
             </h2>

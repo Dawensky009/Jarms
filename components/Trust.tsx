@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function Trust() {
   return (
-    <section aria-label="By the numbers" className="border-y border-ink/5 bg-white">
+    <section aria-label="By the numbers" className="border-y border-ink/5 bg-paper">
       <div className="container-px mx-auto max-w-container py-14 sm:py-16">
         <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4">
           {STATS.map((stat, i) => (

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, ArrowUpRight, Play } from "lucide-react";
 import { SERVICES, type Service } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DripDivider } from "@/components/ui/DripDivider";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
@@ -65,10 +66,8 @@ export function Services() {
 
       <div className="container-px relative z-10 mx-auto max-w-container py-20 sm:py-28">
         <Reveal className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-            What we do
-          </p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight sm:text-6xl">
+          <Eyebrow index="01" tone="light">What we do</Eyebrow>
+          <h2 className="mt-5 font-sans text-4xl font-bold uppercase leading-[1.02] tracking-tight sm:text-6xl">
             Get seen. Get <span className="text-gold">booked</span>. Get paid.
           </h2>
           <p className="mt-5 max-w-xl text-white/55">
@@ -87,12 +86,12 @@ export function Services() {
                   className={reversed ? "lg:order-2" : ""}
                 >
                   <div className="flex items-center gap-4">
-                    <span className="font-display text-5xl font-extrabold text-white/10">
+                    <span className="font-mono text-5xl font-bold text-white/10">
                       {service.index}
                     </span>
                     <span className="h-px flex-1 bg-white/10" />
                   </div>
-                  <h3 className="mt-5 font-display text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
+                  <h3 className="mt-5 font-sans text-3xl font-bold uppercase tracking-tight sm:text-4xl">
                     {service.title} <span className="text-gold">{service.highlight}</span>
                   </h3>
                   <p className="mt-4 max-w-md text-white/60">{service.blurb}</p>
