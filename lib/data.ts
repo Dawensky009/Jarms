@@ -24,6 +24,7 @@ export const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Process", href: "#process" },
   { label: "Pricing", href: "#pricing" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -204,6 +205,37 @@ export const CLIENTS = [
   "Atlas Realty",
   "Kite Tech",
   "Neon Nights",
+];
+
+/* ---------------- FAQ (objection handling) ---------------- */
+
+export type Faq = { q: string; a: string };
+
+export const FAQS: Faq[] = [
+  {
+    q: "How much does a video cost?",
+    a: "Single videos start at $490, and our monthly plan is $1,900 for four videos a month. You always get a clear, fixed price before we start — no surprises, no hidden fees. Got a bigger project? Message us and we'll quote it within 24 hours.",
+  },
+  {
+    q: "How fast will I get my video?",
+    a: "You'll see your first cut in about 48 hours, and most projects are fully finished within a few days. On a deadline? Tell us the date and we'll tell you straight if we can hit it.",
+  },
+  {
+    q: "What if I don't like the result?",
+    a: "You approve every cut before it's final — nothing goes out without your yes. If the first version misses the mark, we revise it until it's right. You're never stuck with a video you don't love.",
+  },
+  {
+    q: "I don't have a script or know exactly what I want. Is that a problem?",
+    a: "Not at all — that's our job. Just tell us the goal (more sales, more bookings, more attention) and we handle the idea, the script and the look. You only have to approve.",
+  },
+  {
+    q: "Do I need to be on camera or send footage?",
+    a: "Only if you want to. We can film it, work with footage you already have, or create it with AI — whatever fits your brand and budget. We'll recommend the best route for you.",
+  },
+  {
+    q: "Do you build websites too?",
+    a: "Yes — video and websites, handled by one team. The site you're reading right now? We built it. Doing both together means no back-and-forth between vendors, and one consistent look.",
+  },
 ];
 
 /* ---------------- Testimonials ---------------- */
