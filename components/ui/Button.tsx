@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 type Variant = "primary" | "outline" | "dark" | "ghost";
 
 const base =
-  "group inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:opacity-60 disabled:cursor-not-allowed";
+  "group inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-[color,background-color,border-color,transform] duration-200 ease-out-strong cursor-pointer active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-transparent disabled:opacity-60 disabled:cursor-not-allowed disabled:active:scale-100";
 
 const sizes = "px-6 py-3 text-sm sm:text-base";
 
@@ -38,7 +38,7 @@ export function Button({
     <>
       {children}
       {arrow && (
-        <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        <ArrowUpRight className="h-4 w-4 transition-transform duration-200 ease-out-strong group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
       )}
     </>
   );

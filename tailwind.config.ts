@@ -68,6 +68,10 @@ const config: Config = {
         floaty: "floaty 6s ease-in-out infinite",
         blink: "blink 1s steps(1) infinite",
       },
+      transitionTimingFunction: {
+        // strong ease-out — built-in CSS easings are too weak (Emil Kowalski)
+        "out-strong": "cubic-bezier(0.23, 1, 0.32, 1)",
+      },
     },
   },
   plugins: [],

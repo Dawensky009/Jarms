@@ -52,7 +52,7 @@ export function Pricing() {
 
                 <a
                   href="#contact"
-                  className={`mt-8 inline-flex w-full cursor-pointer items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors ${
+                  className={`mt-8 inline-flex w-full cursor-pointer items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-[color,background-color,border-color,transform] duration-200 ease-out-strong active:scale-[0.97] ${
                     plan.popular
                       ? "bg-gold text-ink hover:bg-gold-deep hover:text-white"
                       : "border border-ink/15 text-ink hover:border-gold hover:text-gold-deep"

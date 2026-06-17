@@ -45,12 +45,15 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease }}
-          className="mt-9 flex items-center justify-center"
+          className="mt-9 flex flex-col items-center justify-center gap-3"
         >
           <Button href={SITE.whatsappUrl} variant="primary">
             <WhatsAppIcon className="h-5 w-5" />
             Get a Free Quote
           </Button>
+          <p className="text-sm text-ink-muted">
+            Free quote in 24h — no obligation, no pressure.
+          </p>
         </motion.div>
 
         <motion.div

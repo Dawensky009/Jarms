@@ -162,7 +162,7 @@ export function ContactForm() {
                 <button
                   type="submit"
                   disabled={status === "loading" || status === "success"}
-                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 font-medium text-ink transition-colors hover:bg-gold-deep hover:text-white disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 font-medium text-ink transition-[color,background-color,transform] duration-200 ease-out-strong hover:bg-gold-deep hover:text-white active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-70 disabled:active:scale-100"
                 >
                   {status === "loading" && <Loader2 className="h-4 w-4 animate-spin" />}
                   {status === "success" ? "Sent — thank you!" : "Send request"}

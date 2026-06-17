@@ -57,7 +57,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-ink/15 text-ink md:hidden"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-ink/15 text-ink transition-transform duration-200 ease-out-strong active:scale-90 md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
