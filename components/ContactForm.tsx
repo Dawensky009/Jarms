@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Mail, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { SITE, SERVICES } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -44,12 +43,14 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="bg-paper">
+    <section id="contact" className="bg-white">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
-            <Eyebrow index="07">Get a quote</Eyebrow>
-            <h2 className="mt-5 text-section font-bold text-ink">Tell us about your project.</h2>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
+              Get a quote
+            </p>
+            <h2 className="mt-4 text-section font-bold text-ink">Tell us about your project.</h2>
             <p className="mt-5 max-w-md text-ink-muted">
               Tell us what you need — we&apos;ll reply within one business day with
               ideas and a price. It&apos;s free, with no obligation.

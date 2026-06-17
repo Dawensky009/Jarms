@@ -1,21 +1,22 @@
 import { Lightbulb, PenLine, Clapperboard, Rocket, type LucideIcon } from "lucide-react";
 import { STEPS } from "@/lib/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DripDivider } from "@/components/ui/DripDivider";
 
 const ICONS: LucideIcon[] = [Lightbulb, PenLine, Clapperboard, Rocket];
 
 export function HowItWorks() {
   return (
-    <section id="process" className="relative bg-paper">
+    <section id="process" className="relative bg-white">
       {/* dark drips down from the services block into this light section */}
       <DripDivider className="text-night" />
 
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
-        <Reveal className="max-w-2xl">
-          <Eyebrow index="02">How it works</Eyebrow>
-          <h2 className="mt-5 text-section font-bold text-ink">
+        <Reveal className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
+            How it works
+          </p>
+          <h2 className="mt-4 text-section font-bold text-ink">
             From idea to posted — in 4 easy steps.
           </h2>
         </Reveal>

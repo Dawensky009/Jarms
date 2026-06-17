@@ -84,11 +84,11 @@ export function Gallery() {
   const row2 = [...TILES].reverse();
 
   return (
-    <section id="work" className="overflow-hidden bg-paper py-10 sm:py-12">
+    <section id="work" className="overflow-hidden bg-white py-10 sm:py-12">
       {/* soft edge fades so tiles dissolve in/out instead of hard-cutting at the rim */}
       <div className="relative space-y-4">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-paper to-transparent sm:w-28" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-paper to-transparent sm:w-28" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-28" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent sm:w-28" />
 
         <MarqueeRow tiles={TILES} durationClass="[animation-duration:50s]" onPlay={setActive} />
         <MarqueeRow tiles={row2} reverse durationClass="[animation-duration:62s]" onPlay={setActive} />

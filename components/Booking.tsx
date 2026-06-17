@@ -4,7 +4,6 @@ import Script from "next/script";
 import { CalendarClock } from "lucide-react";
 import { SITE } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Button } from "@/components/ui/Button";
 
 export function Booking() {
@@ -13,8 +12,10 @@ export function Booking() {
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <Eyebrow index="06">Book a call</Eyebrow>
-            <h2 className="mt-5 text-section font-bold text-ink">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
+              Book a call
+            </p>
+            <h2 className="mt-4 text-section font-bold text-ink">
               Let&apos;s talk — it&apos;s free and it&apos;s quick.
             </h2>
             <p className="mt-5 max-w-md text-ink-muted">

@@ -21,8 +21,8 @@ const config: Config = {
           soft: "#3C4150",
           muted: "#6B7180",
         },
-        paper: "#F8F7F2", // warm off-white canvas
-        mist: "#EFECE4", // warm light neutral (one step down from paper)
+        paper: "#FFFFFF",
+        mist: "#F4F4F6",
         night: {
           DEFAULT: "#0E1116",
           soft: "#171B22",
@@ -36,13 +36,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "Fraunces", "Georgia", "serif"],
-        sans: ["var(--font-body)", "Space Grotesk", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "Space Mono", "ui-monospace", "monospace"],
+        display: ["var(--font-display)", "Poppins", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "DM Sans", "system-ui", "sans-serif"],
       },
       fontSize: {
-        hero: ["clamp(2.6rem, 6.6vw, 5.5rem)", { lineHeight: "1.0", letterSpacing: "-0.02em" }],
-        section: ["clamp(2rem, 4vw, 3.4rem)", { lineHeight: "1.04", letterSpacing: "-0.015em" }],
+        hero: ["clamp(2.5rem, 6.5vw, 5.25rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        section: ["clamp(1.9rem, 4vw, 3.25rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
       },
       maxWidth: {
         container: "1200px",

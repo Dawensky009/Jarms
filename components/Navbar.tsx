@@ -22,7 +22,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div
         className={`transition-colors duration-300 ${
-          scrolled ? "border-b border-ink/10 bg-paper/85 backdrop-blur-md" : "border-b border-transparent bg-transparent"
+          scrolled ? "border-b border-ink/10 bg-white/85 backdrop-blur-md" : "border-b border-transparent bg-transparent"
         }`}
       >
         <nav className="container-px mx-auto flex h-16 max-w-container items-center justify-between sm:h-20">

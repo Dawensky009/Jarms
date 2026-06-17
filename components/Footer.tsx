@@ -14,7 +14,7 @@ export function Footer() {
           <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
             <h2 className="max-w-2xl text-section font-bold">
               Right now, your competitor is posting. Let&apos;s get you{" "}
-              <span className="italic text-gold">ahead.</span>
+              <span className="text-gradient-gold">ahead.</span>
             </h2>
             <div className="flex flex-wrap gap-3">
               <Button href="#contact" variant="primary">

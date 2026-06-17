@@ -1,15 +1,16 @@
 import { Star } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export function Testimonials() {
   return (
-    <section aria-label="Testimonials" className="bg-paper">
+    <section aria-label="Testimonials" className="bg-white">
       <div className="container-px mx-auto max-w-container py-20 sm:py-24">
-        <Reveal className="max-w-2xl">
-          <Eyebrow index="03">Loved by brands</Eyebrow>
-          <h2 className="mt-5 text-section font-bold text-ink">Don&apos;t take our word for it.</h2>
+        <Reveal className="text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
+            Loved by brands
+          </p>
+          <h2 className="mt-4 text-section font-bold text-ink">Don&apos;t take our word for it.</h2>
         </Reveal>
 
         <RevealGroup className="mt-12 grid gap-6 md:grid-cols-3">

@@ -66,10 +66,11 @@ export function Hero() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="top" className="grain relative overflow-hidden bg-paper pt-28 sm:pt-36">
-      {/* faint warm wash — restrained, not the usual loud AI glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[26rem]">
-        <div className="absolute left-1/2 top-0 h-80 w-[60rem] max-w-[140vw] -translate-x-1/2 bg-[radial-gradient(55%_55%_at_50%_0%,rgba(241,172,35,0.10),transparent_72%)]" />
+    <section id="top" className="grain relative overflow-hidden bg-white pt-28 sm:pt-36">
+      {/* layered ambient glow — a focused bloom over a wide, soft wash for depth */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[30rem]">
+        <div className="absolute left-1/2 top-0 h-72 w-[46rem] max-w-[120vw] -translate-x-1/2 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(241,172,35,0.22),transparent_70%)]" />
+        <div className="absolute left-1/2 top-24 h-96 w-[64rem] max-w-[140vw] -translate-x-1/2 bg-[radial-gradient(50%_50%_at_50%_0%,rgba(241,172,35,0.06),transparent_75%)]" />
       </div>
 
       <div className="container-px relative z-10 mx-auto max-w-container">
@@ -82,7 +83,7 @@ export function Hero() {
             className="text-hero font-bold text-ink"
           >
             Video that makes your brand
-            <span className="mt-1 block italic text-gold-deep">
+            <span className="mt-1 block text-gold-deep">
               <Typewriter words={["sell", "get booked", "stand out", "get noticed", "grow"]} />
             </span>
           </motion.h1>
