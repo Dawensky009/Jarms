@@ -1,7 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+  useMotionValue,
+  useSpring,
+  useMotionTemplate,
+} from "framer-motion";
 import { Star, Play } from "lucide-react";
 import { SITE } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
@@ -75,10 +83,40 @@ export function Hero() {
   const reelScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 1.07]);
   const reelY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -36]);
 
+  // cursor spotlight — a soft gold light that trails the pointer (spring lag = natural)
+  const [spotOn, setSpotOn] = useState(false);
+  const mx = useMotionValue(-600);
+  const my = useMotionValue(-200);
+  const sx = useSpring(mx, { stiffness: 110, damping: 18, mass: 0.5 });
+  const sy = useSpring(my, { stiffness: 110, damping: 18, mass: 0.5 });
+  const spotlight = useMotionTemplate`radial-gradient(480px circle at ${sx}px ${sy}px, rgba(241,172,35,0.16), transparent 70%)`;
+
+  useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)").matches;
+    const r = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (fine && !r) {
+      setSpotOn(true);
+      const rect = sectionRef.current?.getBoundingClientRect();
+      if (rect) {
+        mx.set(rect.width / 2);
+        my.set(rect.height / 3);
+      }
+    }
+  }, [mx, my]);
+
+  const onMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!spotOn) return;
+    const rect = sectionRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    mx.set(e.clientX - rect.left);
+    my.set(e.clientY - rect.top);
+  };
+
   return (
     <section
       ref={sectionRef}
       id="top"
+      onMouseMove={onMove}
       className="grain relative overflow-hidden bg-white pt-28 sm:pt-36"
     >
       {/* layered ambient glow — a focused bloom over a wide, soft wash for depth */}
@@ -87,30 +125,52 @@ export function Hero() {
         <div className="absolute left-1/2 top-24 h-96 w-[64rem] max-w-[140vw] -translate-x-1/2 bg-[radial-gradient(50%_50%_at_50%_0%,rgba(241,172,35,0.06),transparent_75%)]" />
       </div>
 
+      {/* cursor spotlight — follows the pointer with a soft spring lag */}
+      {spotOn && (
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{ background: spotlight }}
+        />
+      )}
+
       <div className="container-px relative z-10 mx-auto max-w-container">
         {/* copy — centered, narrow */}
         <div className="mx-auto max-w-3xl text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="mx-auto inline-flex max-w-xl items-center justify-center gap-2.5 text-sm font-medium text-ink-soft sm:text-base"
+          >
+            <span className="relative flex h-2 w-2 flex-none">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-gold" />
+            </span>
+            Right now, your next customer is watching a video — just not yours.
+          </motion.p>
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease }}
-            className="text-hero font-bold text-ink"
+            transition={{ duration: 0.7, delay: 0.05, ease }}
+            className="mt-5 text-hero font-bold text-ink"
           >
             Video that makes your brand
             <span className="mt-1 block text-gold-deep">
-              <Typewriter words={["sell", "get booked", "stand out", "get noticed", "grow"]} />
+              <Typewriter words={["sell", "go viral", "get booked", "stand out", "grow"]} />
             </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease }}
+            transition={{ duration: 0.7, delay: 0.12, ease }}
             className="mx-auto mt-6 max-w-xl text-base text-ink-muted sm:text-lg"
           >
-            We make the videos and websites that get your business seen — and turn
-            that attention into paying customers. Without the wait or the big-agency
-            price tag.
+            The brands winning your customers aren&apos;t better than you — they&apos;re
+            just more visible. We make the scroll-stopping videos and websites that put
+            you in front, fast — and turn that attention into paying customers.
           </motion.p>
 
           <motion.div
