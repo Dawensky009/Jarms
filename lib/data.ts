@@ -25,7 +25,6 @@ export const NAV_LINKS = [
   { label: "Process", href: "#process" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
-  { label: "Contact", href: "#contact" },
 ];
 
 /* ---------------- Showreel gallery (top, edge-to-edge) ---------------- */

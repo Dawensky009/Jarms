@@ -10,8 +10,6 @@ import { Feature } from "@/components/Feature";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
 import { Faq } from "@/components/Faq";
-import { Booking } from "@/components/Booking";
-import { ContactForm } from "@/components/ContactForm";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -30,8 +28,6 @@ export default function Home() {
         <Testimonials />
         <Pricing />
         <Faq />
-        <Booking />
-        <ContactForm />
       </main>
       <Footer />
     </>

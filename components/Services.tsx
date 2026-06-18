@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Check, ArrowUpRight, Play } from "lucide-react";
-import { SERVICES, type Service } from "@/lib/data";
+import { SERVICES, SITE, type Service } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
 import { DripDivider } from "@/components/ui/DripDivider";
 import { VideoModal } from "@/components/ui/VideoModal";
@@ -107,7 +107,9 @@ export function Services() {
                   </ul>
 
                   <a
-                    href="#contact"
+                    href={SITE.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-gold hover:text-gold"
                   >
                     Start a project

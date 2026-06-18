@@ -1,13 +1,14 @@
 import { NAV_LINKS, SERVICES, SITE } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Reveal } from "@/components/ui/Reveal";
 import { DripDivider } from "@/components/ui/DripDivider";
 
 export function Footer() {
   return (
     <footer className="relative bg-night text-white">
-      {/* white drips down from the contact section into the dark footer */}
-      <DripDivider className="text-white" />
+      {/* the FAQ section (mist) drips down into the dark footer */}
+      <DripDivider className="text-mist" />
 
       <div className="container-px mx-auto max-w-container pb-10 pt-16">
         <Reveal className="border-b border-white/10 pb-14">
@@ -17,15 +18,9 @@ export function Footer() {
               <span className="text-gradient-gold">ahead.</span>
             </h2>
             <div className="flex flex-wrap gap-3">
-              <Button href="#contact" variant="primary">
+              <Button href={SITE.whatsappUrl} variant="primary">
+                <WhatsAppIcon className="h-5 w-5" />
                 Get a Free Quote
-              </Button>
-              <Button
-                href={SITE.calendlyUrl}
-                variant="outline"
-                className="border-white/25 bg-transparent text-white hover:bg-white/10 hover:text-gold"
-              >
-                Book a Call
               </Button>
             </div>
           </div>
