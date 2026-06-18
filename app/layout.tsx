@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 
 const siteUrl = "https://jarmsmarketing.com";
@@ -57,6 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <SmoothScroll />
         <CustomCursor />
         {children}
         <WhatsAppFab />

@@ -5,6 +5,7 @@ import { Gallery } from "@/components/Gallery";
 import { Trust } from "@/components/Trust";
 import { Services } from "@/components/Services";
 import { HowItWorks } from "@/components/HowItWorks";
+import { MarqueeBand } from "@/components/MarqueeBand";
 import { Feature } from "@/components/Feature";
 import { Testimonials } from "@/components/Testimonials";
 import { Pricing } from "@/components/Pricing";
@@ -24,6 +25,7 @@ export default function Home() {
         <Trust />
         <Services />
         <HowItWorks />
+        <MarqueeBand />
         <Feature />
         <Testimonials />
         <Pricing />

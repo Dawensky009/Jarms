@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Star, Play } from "lucide-react";
 import { SITE } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
@@ -64,9 +64,23 @@ function HeroReel({ onOpen }: { onOpen: () => void }) {
 
 export function Hero() {
   const [open, setOpen] = useState(false);
+  const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // signature scroll moment: the reel leans in (scales) and drifts as you scroll past
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const reelScale = useTransform(scrollYProgress, [0, 1], reduce ? [1, 1] : [1, 1.07]);
+  const reelY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -36]);
 
   return (
-    <section id="top" className="grain relative overflow-hidden bg-white pt-28 sm:pt-36">
+    <section
+      ref={sectionRef}
+      id="top"
+      className="grain relative overflow-hidden bg-white pt-28 sm:pt-36"
+    >
       {/* layered ambient glow — a focused bloom over a wide, soft wash for depth */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[30rem]">
         <div className="absolute left-1/2 top-0 h-72 w-[46rem] max-w-[120vw] -translate-x-1/2 bg-[radial-gradient(60%_60%_at_50%_0%,rgba(241,172,35,0.22),transparent_70%)]" />
@@ -135,12 +149,14 @@ export function Hero() {
 
         {/* flagship reel — full width, wider than the copy for an editorial, cinematic feel */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97, y: 24 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, delay: 0.25, ease }}
           className="mt-12 sm:mt-16"
         >
-          <HeroReel onOpen={() => setOpen(true)} />
+          <motion.div style={{ scale: reelScale, y: reelY }} className="will-change-transform">
+            <HeroReel onOpen={() => setOpen(true)} />
+          </motion.div>
         </motion.div>
       </div>
 
