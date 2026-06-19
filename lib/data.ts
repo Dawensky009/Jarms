@@ -58,7 +58,9 @@ export type Service = {
   highlight: string; // word(s) coloured with the accent
   blurb: string;
   bullets: string[];
-  video?: string; // local mp4 — first frame as visual, plays on click
+  video?: string; // local mp4 — used as the still photo (poster) for the card
+  image?: string; // explicit photo override (e.g. a website screenshot)
+  url?: string; // if set, the card links here instead of opening the video
   tone: string;
 };
 
@@ -105,6 +107,8 @@ export const SERVICES: Service[] = [
       "A website that sells for you 24/7 — fast, easy to use, and done for you. The one you’re reading right now? We built it.",
     bullets: ["Conversion-focused design", "Next.js performance", "SEO & analytics"],
     video: "/videos/astreya.mp4",
+    image: "/sites/juicylicious.jpeg",
+    url: "#websites",
     tone: "from-[#2a1840] to-[#0e1116]",
   },
 ];

@@ -29,9 +29,9 @@ function CenterReel({ onOpen }: { onOpen: () => void }) {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    const fine = window.matchMedia("(pointer: fine)").matches;
+    // muted inline autoplay works on mobile/tablet too — only skip for reduced-motion
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (fine && !reduce) v.play().catch(() => {});
+    if (!reduce) v.play().catch(() => {});
   }, []);
   return (
     <button

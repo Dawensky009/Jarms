@@ -4,38 +4,46 @@ import { useState } from "react";
 import { ArrowUpRight, Play } from "lucide-react";
 import { SERVICES, SITE, type Service } from "@/lib/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
+import { posterFor } from "@/components/ui/useHoverPlay";
 import { VideoModal } from "@/components/ui/VideoModal";
 
+function ServiceMedia({ service }: { service: Service }) {
+  const photo = service.image ?? (service.video ? posterFor(service.video) : "");
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={photo}
+        alt={`${service.title} ${service.highlight}`}
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-night/25 to-transparent" />
+      <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
+        {service.url ? <ArrowUpRight className="h-4 w-4" /> : <Play className="ml-0.5 h-4 w-4 fill-current" />}
+      </span>
+    </>
+  );
+}
+
 function ServiceCard({ service, onPlay }: { service: Service; onPlay: (s: Service) => void }) {
-  const hover = useHoverPlay();
   return (
     <RevealItem>
       <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
-        {service.video && (
+        {service.url ? (
+          <a
+            href={service.url}
+            aria-label={`${service.title} ${service.highlight}`}
+            className="relative block aspect-video w-full overflow-hidden bg-night"
+          >
+            <ServiceMedia service={service} />
+          </a>
+        ) : (
           <button
             onClick={() => onPlay(service)}
-            onMouseEnter={hover.onMouseEnter}
-            onMouseLeave={hover.onMouseLeave}
-            aria-label={`Play ${service.title} ${service.highlight}`}
+            aria-label={`Watch ${service.title} ${service.highlight}`}
             className="relative block aspect-video w-full cursor-pointer overflow-hidden bg-night"
           >
-            <video
-              ref={hover.videoRef}
-              src={service.video}
-              poster={posterFor(service.video)}
-              muted
-              loop
-              playsInline
-              preload="none"
-              tabIndex={-1}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
-            />
-            <span className="absolute inset-0 flex items-center justify-center">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 shadow-xl transition-opacity duration-300 group-hover:opacity-100">
-                <Play className="ml-0.5 h-5 w-5 fill-current" />
-              </span>
-            </span>
+            <ServiceMedia service={service} />
           </button>
         )}
 
