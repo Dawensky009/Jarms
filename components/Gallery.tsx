@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Play } from "lucide-react";
+import { Play, ArrowUpRight } from "lucide-react";
 import { TILES, type Tile } from "@/lib/data";
+import { Reveal } from "@/components/ui/Reveal";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
 
@@ -84,7 +85,26 @@ export function Gallery() {
   const row2 = [...TILES].reverse();
 
   return (
-    <section id="work" className="overflow-hidden bg-white py-10 sm:py-12">
+    <section id="work" className="overflow-hidden bg-white py-16 sm:py-20">
+      <div className="container-px mx-auto mb-10 max-w-container">
+        <Reveal>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-deep">
+                <ArrowUpRight className="h-4 w-4" />
+                Our work
+              </p>
+              <h2 className="mt-4 font-display text-section font-bold uppercase tracking-tight text-ink">
+                Recent projects
+              </h2>
+            </div>
+            <p className="max-w-xs text-sm text-ink-muted">
+              Hover to preview, tap to watch. Real work for real businesses.
+            </p>
+          </div>
+        </Reveal>
+      </div>
+
       {/* soft edge fades so tiles dissolve in/out instead of hard-cutting at the rim */}
       <div className="relative space-y-4">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent sm:w-28" />

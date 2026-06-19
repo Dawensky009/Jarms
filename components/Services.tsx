@@ -1,58 +1,77 @@
 "use client";
 
 import { useState } from "react";
-import { Check, ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import { SERVICES, SITE, type Service } from "@/lib/data";
-import { Reveal } from "@/components/ui/Reveal";
-import { DripDivider } from "@/components/ui/DripDivider";
-import { VideoModal } from "@/components/ui/VideoModal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
+import { VideoModal } from "@/components/ui/VideoModal";
 
-function ServiceVisual({
-  service,
-  onPlay,
-}: {
-  service: Service;
-  onPlay: (s: Service) => void;
-}) {
+function ServiceCard({ service, onPlay }: { service: Service; onPlay: (s: Service) => void }) {
   const hover = useHoverPlay();
-
-  if (!service.video) {
-    return (
-      <div className="relative aspect-[4/3] overflow-hidden rounded-4xl border border-white/10">
-        <div className={`absolute inset-0 bg-gradient-to-br ${service.tone}`} />
-      </div>
-    );
-  }
   return (
-    <button
-      onClick={() => onPlay(service)}
-      onMouseEnter={hover.onMouseEnter}
-      onMouseLeave={hover.onMouseLeave}
-      aria-label={`Play ${service.title} ${service.highlight}`}
-      className={`group relative block aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-4xl border border-white/10 bg-gradient-to-br shadow-xl shadow-night/40 transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1 hover:shadow-2xl hover:shadow-night/60 active:scale-[0.99] ${service.tone}`}
-    >
-      <video
-        ref={hover.videoRef}
-        src={service.video}
-        poster={posterFor(service.video)}
-        muted
-        loop
-        playsInline
-        preload="none"
-        tabIndex={-1}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out-strong group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-night/60 to-transparent" />
-      <span className="absolute inset-0 flex items-center justify-center">
-        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-gold text-white shadow-xl transition-transform duration-300 group-hover:scale-110">
-          <Play className="ml-1 h-6 w-6 fill-current" />
-        </span>
-      </span>
-      <span className="absolute bottom-4 left-5 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-white">
-        {service.title} {service.highlight}
-      </span>
-    </button>
+    <RevealItem>
+      <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
+        {service.video && (
+          <button
+            onClick={() => onPlay(service)}
+            onMouseEnter={hover.onMouseEnter}
+            onMouseLeave={hover.onMouseLeave}
+            aria-label={`Play ${service.title} ${service.highlight}`}
+            className="relative block aspect-video w-full cursor-pointer overflow-hidden bg-night"
+          >
+            <video
+              ref={hover.videoRef}
+              src={service.video}
+              poster={posterFor(service.video)}
+              muted
+              loop
+              playsInline
+              preload="none"
+              tabIndex={-1}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
+            />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 shadow-xl transition-opacity duration-300 group-hover:opacity-100">
+                <Play className="ml-0.5 h-5 w-5 fill-current" />
+              </span>
+            </span>
+          </button>
+        )}
+
+        <div className="flex flex-1 flex-col p-6 sm:p-7">
+          <div className="flex items-center justify-between">
+            <span className="font-display text-sm font-bold text-ink-muted">{service.index}</span>
+            <ArrowUpRight className="h-4 w-4 text-ink-muted" />
+          </div>
+          <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-tight text-ink sm:text-2xl">
+            {service.title} <span className="text-gold-deep">{service.highlight}</span>
+          </h3>
+          <p className="mt-3 text-sm text-ink-muted">{service.blurb}</p>
+
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {service.bullets.map((b) => (
+              <li
+                key={b}
+                className="rounded-full border border-ink/10 bg-mist px-3 py-1 text-xs font-medium text-ink-soft"
+              >
+                {b}
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={SITE.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-gold-deep"
+          >
+            Start a project
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+    </RevealItem>
   );
 }
 
@@ -60,73 +79,23 @@ export function Services() {
   const [active, setActive] = useState<Service | null>(null);
 
   return (
-    <section id="services" className="grain relative overflow-hidden bg-night text-white">
-      <DripDivider className="text-white" />
-
-      <div className="container-px relative z-10 mx-auto max-w-container py-20 sm:py-28">
-        <Reveal className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
-            What we do
+    <section id="services" className="bg-white">
+      <div className="container-px mx-auto max-w-container py-20 sm:py-28">
+        <Reveal>
+          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-deep">
+            <ArrowUpRight className="h-4 w-4" />
+            Our services
           </p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight sm:text-6xl">
-            Get seen. Get <span className="text-gold">booked</span>. Get paid.
+          <h2 className="mt-4 max-w-3xl font-display text-section font-bold uppercase tracking-tight text-ink">
+            Everything you need to get seen
           </h2>
-          <p className="mt-5 max-w-xl text-white/55">
-            Ads, brand films, product videos and websites — made for businesses
-            that want customers, not just &ldquo;content.&rdquo;
-          </p>
         </Reveal>
 
-        <div className="mt-16 space-y-16 sm:space-y-24">
-          {SERVICES.map((service, i) => {
-            const reversed = i % 2 === 1;
-            return (
-              <div key={service.id} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-                <Reveal
-                  direction={reversed ? "right" : "left"}
-                  className={reversed ? "lg:order-2" : ""}
-                >
-                  <div className="flex items-center gap-4">
-                    <span className="font-display text-5xl font-extrabold text-white/10">
-                      {service.index}
-                    </span>
-                    <span className="h-px flex-1 bg-white/10" />
-                  </div>
-                  <h3 className="mt-5 font-display text-3xl font-extrabold uppercase tracking-tight sm:text-4xl">
-                    {service.title} <span className="text-gold">{service.highlight}</span>
-                  </h3>
-                  <p className="mt-4 max-w-md text-white/60">{service.blurb}</p>
-
-                  <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-                    {service.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-white/75">
-                        <Check className="h-4 w-4 text-gold" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <a
-                    href={SITE.whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-8 inline-flex items-center gap-1.5 rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:border-gold hover:text-gold"
-                  >
-                    Start a project
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </Reveal>
-
-                <Reveal
-                  direction={reversed ? "left" : "right"}
-                  className={reversed ? "lg:order-1" : ""}
-                >
-                  <ServiceVisual service={service} onPlay={setActive} />
-                </Reveal>
-              </div>
-            );
-          })}
-        </div>
+        <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2">
+          {SERVICES.map((service) => (
+            <ServiceCard key={service.id} service={service} onPlay={setActive} />
+          ))}
+        </RevealGroup>
       </div>
 
       <VideoModal

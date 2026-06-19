@@ -22,9 +22,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "#about" },
 ];
 
 /* ---------------- Showreel gallery (top, edge-to-edge) ---------------- */
@@ -109,6 +107,28 @@ export const SERVICES: Service[] = [
     video: "/videos/astreya.mp4",
     tone: "from-[#2a1840] to-[#0e1116]",
   },
+];
+
+/* ---------------- Work categories ("Trusted by" cards) ---------------- */
+
+export type WorkCategory = { label: string; caption: string; poster: string };
+
+export const WORK_CATEGORIES: WorkCategory[] = [
+  { label: "Ad & Social Video", caption: "Reels, TikTok & Shorts that stop the thumb", poster: "/posters/anna-bbq.webp" },
+  { label: "Commercial & Brand Films", caption: "The film that makes people remember you", poster: "/posters/cdm.webp" },
+  { label: "Product Videos", caption: "Shots that turn lookers into buyers", poster: "/posters/shake-up.webp" },
+  { label: "Websites That Sell", caption: "Fast, done-for-you, built to convert", poster: "/posters/astreya.webp" },
+];
+
+/* ---------------- Outcomes ("What we help you achieve" bento) ---------------- */
+
+export type Outcome = { title: string; blurb: string; accent?: boolean };
+
+export const OUTCOMES: Outcome[] = [
+  { title: "Get seen", blurb: "Scroll-stopping video that actually gets watched — and shared — instead of ignored." },
+  { title: "Grow your audience", blurb: "Show up consistently so the right people start to know, like and remember you." },
+  { title: "Make content people care about", blurb: "Real stories and emotion — not just “#content” that fills a feed." },
+  { title: "Turn views into sales", blurb: "Attention is nice. Paying customers are better. We build for the second one.", accent: true },
 ];
 
 /* ---------------- How it works (4 coloured steps) ---------------- */

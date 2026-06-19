@@ -36,11 +36,13 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-display)", "Poppins", "system-ui", "sans-serif"],
-        sans: ["var(--font-body)", "DM Sans", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Space Grotesk", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
-        hero: ["clamp(2.5rem, 6.5vw, 5.25rem)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
+        // big bold uppercase display headlines (template-style)
+        giant: ["clamp(2.75rem, 8.5vw, 7rem)", { lineHeight: "0.95", letterSpacing: "-0.03em" }],
+        hero: ["clamp(2.5rem, 6.5vw, 5.25rem)", { lineHeight: "1.0", letterSpacing: "-0.03em" }],
         section: ["clamp(1.9rem, 4vw, 3.25rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
       },
       maxWidth: {

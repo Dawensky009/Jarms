@@ -1,77 +1,47 @@
-import { NAV_LINKS, SERVICES, SITE } from "@/lib/data";
-import { Button } from "@/components/ui/Button";
+import { ArrowUpRight } from "lucide-react";
+import { NAV_LINKS, SITE } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Reveal } from "@/components/ui/Reveal";
-import { DripDivider } from "@/components/ui/DripDivider";
 
 export function Footer() {
   return (
-    <footer className="relative bg-night text-white">
-      {/* the FAQ section (mist) drips down into the dark footer */}
-      <DripDivider className="text-mist" />
-
-      <div className="container-px mx-auto max-w-container pb-10 pt-16">
-        <Reveal className="border-b border-white/10 pb-14">
-          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
-            <h2 className="max-w-2xl text-section font-bold">
-              Right now, your competitor is posting. Let&apos;s get you{" "}
-              <span className="text-gradient-gold">ahead.</span>
+    <footer id="contact" className="relative overflow-hidden bg-night text-white">
+      <div className="container-px mx-auto max-w-container pt-20 sm:pt-28">
+        <Reveal>
+          <div className="flex flex-col items-start justify-between gap-8 border-b border-white/10 pb-14 lg:flex-row lg:items-end">
+            <h2 className="max-w-2xl font-display text-4xl font-bold uppercase leading-[1.02] tracking-tight sm:text-6xl">
+              Let&apos;s make something worth{" "}
+              <span className="text-gold">watching.</span>
             </h2>
-            <div className="flex flex-wrap gap-3">
-              <Button href={SITE.whatsappUrl} variant="primary">
-                <WhatsAppIcon className="h-5 w-5" />
-                Get a Free Quote
-              </Button>
-            </div>
+            <a
+              href={SITE.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex flex-none items-center gap-2.5 rounded-full bg-gold py-3 pl-6 pr-3 text-base font-semibold text-ink transition-colors duration-200 ease-out-strong hover:bg-gold-soft"
+            >
+              <WhatsAppIcon className="h-5 w-5" />
+              Get a free quote
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-gold transition-transform duration-200 ease-out-strong group-hover:rotate-45">
+                <ArrowUpRight className="h-5 w-5" />
+              </span>
+            </a>
           </div>
         </Reveal>
 
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
-            <a href="#top" className="flex items-baseline">
-              <span className="font-display text-2xl font-extrabold tracking-tight">
-                Jarms Marketing
-              </span>
-              <span className="ml-1 h-2 w-2 self-end rounded-full bg-gold" />
-            </a>
-            <p className="mt-4 max-w-xs text-sm text-white/55">{SITE.tagline}</p>
+        <div className="flex flex-col gap-8 py-12 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap gap-x-8 gap-y-3">
+            {NAV_LINKS.map((l) => (
+              <a key={l.href} href={l.href} className="text-sm text-white/65 transition-colors hover:text-gold">
+                {l.label}
+              </a>
+            ))}
             <a
               href={`mailto:${SITE.email}`}
-              className="mt-4 inline-block text-sm text-gold transition-colors hover:text-gold-soft"
+              className="text-sm text-white/65 transition-colors hover:text-gold"
             >
               {SITE.email}
             </a>
           </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-white/40">Navigate</p>
-            <ul className="mt-4 space-y-2.5">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="text-sm text-white/65 transition-colors hover:text-gold">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-white/40">Services</p>
-            <ul className="mt-4 space-y-2.5">
-              {SERVICES.map((s) => (
-                <li key={s.id}>
-                  <a href="#services" className="text-sm text-white/65 transition-colors hover:text-gold">
-                    {s.title} {s.highlight}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="text-sm text-white/45">© 2026 Jarms Marketing. All rights reserved.</p>
           <div className="flex gap-4">
             {SITE.socials.map((s) => (
               <a
@@ -86,6 +56,15 @@ export function Footer() {
             ))}
           </div>
         </div>
+
+        <p className="pb-6 text-sm text-white/40">© 2026 Jarms Marketing. All rights reserved.</p>
+      </div>
+
+      {/* giant wordmark */}
+      <div className="pointer-events-none select-none px-2">
+        <p className="text-center font-display font-bold uppercase leading-[0.78] tracking-tighter text-white [font-size:clamp(4rem,21vw,17rem)]">
+          Jarms
+        </p>
       </div>
     </footer>
   );

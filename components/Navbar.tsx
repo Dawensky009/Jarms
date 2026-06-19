@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/data";
-import { Button } from "@/components/ui/Button";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 export function Navbar() {
@@ -22,22 +21,25 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div
         className={`transition-colors duration-300 ${
-          scrolled ? "border-b border-ink/10 bg-white/85 backdrop-blur-md" : "border-b border-transparent bg-transparent"
+          scrolled ? "border-b border-ink/10 bg-white/80 backdrop-blur-md" : "border-b border-transparent bg-transparent"
         }`}
       >
-        <nav className="container-px mx-auto flex h-16 max-w-container items-center justify-between sm:h-20">
-          <a href="#top" className="flex items-center" aria-label="Jarms Marketing home">
+        <nav className="container-px mx-auto flex h-16 max-w-container items-center justify-between sm:h-[4.5rem]">
+          {/* logo */}
+          <a href="#top" className="flex items-center gap-2.5" aria-label="Jarms Marketing home">
             <Image
               src="/logo_Jarms.png"
               alt="Jarms Marketing"
-              width={160}
-              height={160}
+              width={120}
+              height={120}
               priority
-              className="h-12 w-12 rounded-xl object-cover ring-1 ring-ink/5 sm:h-14 sm:w-14"
+              className="h-9 w-9 rounded-lg object-cover"
             />
+            <span className="font-display text-lg font-bold tracking-tight text-ink">Jarms</span>
           </a>
 
-          <div className="hidden items-center gap-8 md:flex">
+          {/* centred nav */}
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-9 md:flex">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -49,13 +51,21 @@ export function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <Button href={SITE.whatsappUrl} variant="primary" className="px-5 py-2.5">
-              <WhatsAppIcon className="h-4 w-4" />
-              Get a Video / Website
-            </Button>
-          </div>
+          {/* dark pill CTA */}
+          <a
+            href={SITE.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group hidden items-center gap-2 rounded-full bg-ink py-2 pl-4 pr-2 text-sm font-medium text-white transition-colors duration-200 ease-out-strong hover:bg-ink-soft md:inline-flex"
+          >
+            <WhatsAppIcon className="h-4 w-4" />
+            Contact
+            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold text-ink transition-transform duration-200 ease-out-strong group-hover:rotate-45">
+              <ArrowUpRight className="h-4 w-4" />
+            </span>
+          </a>
 
+          {/* mobile toggle */}
           <button
             className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-ink/15 text-ink transition-transform duration-200 ease-out-strong active:scale-90 md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -81,10 +91,15 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <Button href={SITE.whatsappUrl} variant="primary" className="mt-2 w-full">
-                <WhatsAppIcon className="h-4 w-4" />
-                Get a Video / Website
-              </Button>
+              <a
+                href={SITE.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-ink py-3 text-base font-medium text-white"
+              >
+                <WhatsAppIcon className="h-5 w-5" />
+                Contact us
+              </a>
             </div>
           </div>
         </div>
