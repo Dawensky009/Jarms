@@ -10,7 +10,7 @@ import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const CENTER = TILES.find((t) => t.id === "blind-eye") ?? TILES[0];
+const CENTER = TILES.find((t) => t.id === "star") ?? TILES[0];
 const CARD_A = TILES.find((t) => t.id === "makaya") ?? TILES[0];
 const CARD_B = TILES.find((t) => t.id === "cdm") ?? TILES[1];
 const CARD_C = TILES.find((t) => t.id === "anna") ?? TILES[2];
