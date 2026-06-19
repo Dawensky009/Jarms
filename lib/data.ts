@@ -131,6 +131,25 @@ export const OUTCOMES: Outcome[] = [
   { title: "Turn views into sales", blurb: "Attention is nice. Paying customers are better. We build for the second one.", accent: true },
 ];
 
+/* ---------------- Websites we've built (portfolio) ---------------- */
+
+export type Website = { name: string; tag: string; url: string; image: string };
+
+export const WEBSITES: Website[] = [
+  {
+    name: "Juicylicious",
+    tag: "E-commerce · Juice & food brand",
+    url: "https://juicylicious.vercel.app/",
+    image: "/sites/juicylicious.jpeg",
+  },
+  {
+    name: "Dawensky Thermildort",
+    tag: "Personal portfolio · Analyst",
+    url: "https://dt-eight-kappa.vercel.app/",
+    image: "/sites/dt-portfolio.jpeg",
+  },
+];
+
 /* ---------------- How it works (4 coloured steps) ---------------- */
 
 export type Step = {

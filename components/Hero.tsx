@@ -2,15 +2,23 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ArrowLeft, Play } from "lucide-react";
-import { SITE, TILES, type Tile } from "@/lib/data";
+import { ArrowRight, Play } from "lucide-react";
+import { SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { VideoModal } from "@/components/ui/VideoModal";
-import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
+import { posterFor } from "@/components/ui/useHoverPlay";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const CENTER = TILES.find((t) => t.id === "star") ?? TILES[0];
+// the hero centrepiece is a mix: star-english[5–14s] then shake-up[0–14s], looped
+const CENTER: Tile = {
+  id: "hero-mix",
+  title: "Jarms Showreel",
+  client: "Selected work",
+  category: "Brand",
+  video: "/videos/hero-mix.mp4",
+  tone: "from-[#3a2c10] to-[#0e1116]",
+};
 const CARD_A = TILES.find((t) => t.id === "makaya") ?? TILES[0];
 const CARD_B = TILES.find((t) => t.id === "cdm") ?? TILES[1];
 const CARD_C = TILES.find((t) => t.id === "anna") ?? TILES[2];
@@ -49,29 +57,28 @@ function CenterReel({ onOpen }: { onOpen: () => void }) {
   );
 }
 
-/** Small image card (poster) that opens the modal. */
-function PosterCard({ tile, onOpen, className = "" }: { tile: Tile; onOpen: (t: Tile) => void; className?: string }) {
-  const hover = useHoverPlay();
+/** A real website we built — shown as a photo (screenshot) that links to the live site. */
+function SiteCard({ site, className = "" }: { site: Website; className?: string }) {
   return (
-    <button
-      onClick={() => onOpen(tile)}
-      onMouseEnter={hover.onMouseEnter}
-      onMouseLeave={hover.onMouseLeave}
-      aria-label={`Play ${tile.title}`}
-      className={`group relative overflow-hidden rounded-2xl border border-ink/10 bg-night shadow-xl shadow-ink/10 transition-transform duration-300 ease-out-strong hover:-translate-y-1 ${className}`}
+    <a
+      href={site.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Visit ${site.name}`}
+      className={`group relative block overflow-hidden rounded-2xl border border-ink/10 bg-night shadow-xl shadow-ink/10 transition-transform duration-300 ease-out-strong hover:-translate-y-1 ${className}`}
     >
-      <video
-        ref={hover.videoRef}
-        src={tile.video}
-        poster={posterFor(tile.video)}
-        muted
-        loop
-        playsInline
-        preload="none"
-        tabIndex={-1}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={site.image}
+        alt={`${site.name} website`}
+        className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 ease-out-strong group-hover:scale-105"
       />
-    </button>
+      <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/10 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 p-3">
+        <p className="text-sm font-semibold text-white">{site.name}</p>
+        <p className="text-[0.7rem] text-white/60">Website</p>
+      </div>
+    </a>
   );
 }
 
@@ -195,9 +202,9 @@ export function Hero() {
             </p>
           </div>
 
-          {/* image cards */}
-          <PosterCard tile={CARD_B} onOpen={setActive} className="aspect-[4/3] sm:aspect-video lg:h-40" />
-          <PosterCard tile={CARD_C} onOpen={setActive} className="hidden aspect-[4/3] sm:aspect-video lg:block lg:h-40" />
+          {/* websites we built — shown as photos */}
+          <SiteCard site={WEBSITES[0]} className="aspect-[4/3] sm:aspect-video lg:h-40" />
+          <SiteCard site={WEBSITES[1]} className="hidden aspect-[4/3] sm:aspect-video lg:block lg:h-40" />
         </motion.div>
       </div>
 

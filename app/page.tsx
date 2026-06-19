@@ -5,6 +5,7 @@ import { TrustedBy } from "@/components/TrustedBy";
 import { AgencyBlock } from "@/components/AgencyBlock";
 import { Achieve } from "@/components/Achieve";
 import { Gallery } from "@/components/Gallery";
+import { WebPortfolio } from "@/components/WebPortfolio";
 import { Services } from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
 import { Footer } from "@/components/Footer";
@@ -20,6 +21,7 @@ export default function Home() {
         <AgencyBlock />
         <Achieve />
         <Gallery />
+        <WebPortfolio />
         <Services />
         <Testimonials />
       </main>
