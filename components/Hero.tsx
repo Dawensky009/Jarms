@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Clapperboard, Globe, Star } from "lucide-react";
 import { SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
-import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { VideoModal } from "@/components/ui/VideoModal";
 import { posterFor } from "@/components/ui/useHoverPlay";
+import { MobileVideoSwipe } from "@/components/ui/MobileVideoSwipe";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -19,26 +18,47 @@ const CENTER: Tile = {
   video: "/videos/hero-mix.mp4",
   tone: "from-[#3a2c10] to-[#0e1116]",
 };
-const CARD_A = TILES.find((t) => t.id === "makaya") ?? TILES[0];
-const CARD_B = TILES.find((t) => t.id === "cdm") ?? TILES[1];
-const CARD_C = TILES.find((t) => t.id === "anna") ?? TILES[2];
+const STAT = TILES.find((t) => t.id === "makaya") ?? TILES[0];
+const AV1 = TILES.find((t) => t.id === "cdm") ?? TILES[1];
+const AV2 = TILES.find((t) => t.id === "anna") ?? TILES[2];
 
-/** The tall centrepiece reel — autoplays muted, opens on click. */
-function CenterReel({ onOpen }: { onOpen: () => void }) {
+/** Two clear, separate CTAs — the visitor taps the one matching their need. */
+function DualCTAs({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex gap-3 ${className}`}>
+      <a
+        href={SITE.whatsappVideo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 py-3.5 text-sm font-semibold text-white transition-colors duration-200 ease-out-strong hover:bg-ink-soft active:scale-[0.98]"
+      >
+        <Clapperboard className="h-4 w-4 text-gold" />
+        Get a Video
+      </a>
+      <a
+        href={SITE.whatsappWeb}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gold px-4 py-3.5 text-sm font-semibold text-ink transition-colors duration-200 ease-out-strong hover:bg-gold-soft active:scale-[0.98]"
+      >
+        <Globe className="h-4 w-4" />
+        Get a Website
+      </a>
+    </div>
+  );
+}
+
+/** Centrepiece reel — autoplays inline (muted), never opens a modal. */
+function CenterReel() {
   const ref = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    // muted inline autoplay works on mobile/tablet too — only skip for reduced-motion
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduce) v.play().catch(() => {});
   }, []);
   return (
-    <button
-      onClick={onOpen}
-      aria-label="Play the showreel"
-      className="group relative block h-full w-full cursor-pointer overflow-hidden rounded-[2rem] border border-ink/10 bg-night shadow-[0_40px_90px_-40px_rgba(20,22,29,0.45)]"
-    >
+    <div className="relative h-full w-full overflow-hidden rounded-[2rem] border border-ink/10 bg-night shadow-[0_40px_90px_-40px_rgba(20,22,29,0.45)]">
       <video
         ref={ref}
         src={CENTER.video}
@@ -50,14 +70,10 @@ function CenterReel({ onOpen }: { onOpen: () => void }) {
         tabIndex={-1}
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <span className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-ink shadow-lg backdrop-blur transition-transform duration-300 ease-out-strong group-hover:scale-110">
-        <Play className="ml-0.5 h-5 w-5 fill-current" />
-      </span>
-    </button>
+    </div>
   );
 }
 
-/** A real website we built — shown as a photo (screenshot) that links to the live site. */
 function SiteCard({ site, className = "" }: { site: Website; className?: string }) {
   return (
     <a
@@ -82,6 +98,19 @@ function SiteCard({ site, className = "" }: { site: Website; className?: string 
   );
 }
 
+function TrustLine({ className = "" }: { className?: string }) {
+  return (
+    <div className={`flex items-center justify-center gap-2 text-xs text-ink-muted ${className}`}>
+      <span className="flex">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" />
+        ))}
+      </span>
+      4.9 · Trusted by 90+ brands
+    </div>
+  );
+}
+
 const Words = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <span
     aria-hidden="true"
@@ -92,128 +121,146 @@ const Words = ({ children, className = "" }: { children: React.ReactNode; classN
 );
 
 export function Hero() {
-  const [active, setActive] = useState<Tile | null>(null);
-
   return (
-    <section id="top" className="relative overflow-hidden bg-[#f4f3ef] pt-24 sm:pt-28">
+    <section id="top" className="relative overflow-hidden bg-[#f4f3ef] pt-20 sm:pt-28">
       {/* dotted "beautiful background" */}
       <div className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,_rgba(20,22,29,0.08)_1.1px,_transparent_1.1px)] [background-size:22px_22px]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(60%_50%_at_50%_0%,rgba(241,172,35,0.10),transparent_70%)]" />
 
       <div className="container-px relative z-10 mx-auto max-w-container">
-        <h1 className="sr-only">Jarms Marketing — a creative video & web agency that turns attention into paying customers.</h1>
+        <h1 className="sr-only">
+          Jarms Marketing — a creative video &amp; web agency that turns attention into paying customers.
+        </h1>
 
-        {/* headline wrapping the centrepiece */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease }}
-          className="grid items-stretch gap-6 lg:grid-cols-[1fr_minmax(290px,360px)_1fr] lg:gap-8"
-        >
-          {/* left */}
-          <div className="flex flex-col gap-6 lg:gap-7 lg:text-right">
-            <Words>
-              Creative
-              <br />
-              Digital
-            </Words>
-            <p className="font-display text-sm font-bold uppercase leading-snug tracking-wide text-ink-soft lg:max-w-[15rem] lg:self-end">
-              We turn attention into
-              <br className="hidden lg:block" /> paying customers.
-            </p>
-          </div>
-
-          {/* centrepiece */}
-          <div className="order-first aspect-[3/4] w-full lg:order-none">
-            <CenterReel onOpen={() => setActive(CENTER)} />
-          </div>
-
-          {/* right */}
-          <div className="flex flex-col gap-6 lg:gap-7">
-            <Words>Agency</Words>
-            <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={SITE.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-ink py-2.5 pl-5 pr-2.5 text-sm font-medium text-white transition-colors duration-200 ease-out-strong hover:bg-ink-soft"
-              >
-                <WhatsAppIcon className="h-4 w-4" />
-                Start Project
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-gold text-ink transition-transform duration-200 ease-out-strong group-hover:rotate-45">
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </a>
-              <a
-                href="#work"
-                className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/70 px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-200 ease-out-strong hover:border-ink/30"
-              >
-                View Our Work
-              </a>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* floating proof cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease }}
-          className="relative z-10 mt-10 grid grid-cols-2 gap-3 pb-16 sm:gap-4 lg:-mt-12 lg:grid-cols-[1.3fr_1fr_0.8fr_0.8fr] lg:items-end"
-        >
-          {/* stat card */}
-          <button
-            onClick={() => setActive(CARD_A)}
-            className="group relative flex aspect-[4/3] items-end overflow-hidden rounded-2xl border border-white/15 bg-night p-4 text-left shadow-xl shadow-ink/20 sm:aspect-video lg:h-40"
-            aria-label="Play project reel"
+        {/* ===================== MOBILE (fold = hook → swipe → CTAs) ===================== */}
+        <div className="lg:hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="text-center"
           >
-            <video
-              src={CARD_A.video}
-              poster={posterFor(CARD_A.video)}
-              muted
-              loop
-              playsInline
-              preload="none"
-              tabIndex={-1}
-              className="absolute inset-0 h-full w-full object-cover opacity-70 transition-transform duration-500 ease-out-strong group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-night via-night/40 to-transparent" />
-            <div className="relative">
-              <p className="font-display text-lg font-bold text-white">50+ projects delivered</p>
-              <p className="text-xs text-white/70">3× average client growth</p>
-            </div>
-            <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-ink">
-              <Play className="ml-0.5 h-4 w-4 fill-current" />
-            </span>
-          </button>
-
-          {/* trusted card */}
-          <div className="flex aspect-[4/3] flex-col justify-between rounded-2xl border border-ink/10 bg-white p-4 shadow-xl shadow-ink/5 sm:aspect-video lg:h-40">
-            <div className="flex -space-x-2">
-              {[CARD_B, CARD_C, CENTER].map((t) => (
-                <span key={t.id} className="h-8 w-8 overflow-hidden rounded-full border-2 border-white">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={posterFor(t.video)} alt="" className="h-full w-full object-cover" />
-                </span>
-              ))}
-            </div>
-            <p className="text-sm font-medium leading-snug text-ink">
-              Trusted by startups &amp; brands across many fields.
+            <h2 className="font-display text-[clamp(1.9rem,8.5vw,2.7rem)] font-bold uppercase leading-[1.02] tracking-tight text-ink">
+              Video &amp; websites that <span className="text-gold-deep">get you customers.</span>
+            </h2>
+            <p className="mx-auto mt-3 max-w-sm text-sm text-ink-muted">
+              Scroll-stopping reels and sites that turn attention into sales — fast.
             </p>
-          </div>
+          </motion.div>
 
-          {/* websites we built — shown as photos */}
-          <SiteCard site={WEBSITES[0]} className="aspect-[4/3] sm:aspect-video lg:h-40" />
-          <SiteCard site={WEBSITES[1]} className="hidden aspect-[4/3] sm:aspect-video lg:block lg:h-40" />
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease }}
+            className="mt-6"
+          >
+            <MobileVideoSwipe tiles={TILES} />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18, ease }}
+            className="mt-6 pb-12"
+          >
+            <DualCTAs />
+            <p className="mt-3 text-center text-xs text-ink-muted">Free quote in 24h · No obligation</p>
+            <TrustLine className="mt-5" />
+          </motion.div>
+        </div>
+
+        {/* ===================== DESKTOP ===================== */}
+        <div className="hidden lg:block">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease }}
+            className="grid items-stretch gap-8 lg:grid-cols-[1fr_minmax(290px,360px)_1fr]"
+          >
+            {/* left */}
+            <div className="flex flex-col gap-7 text-right">
+              <Words>
+                Creative
+                <br />
+                Digital
+              </Words>
+              <p className="self-end max-w-[15rem] font-display text-sm font-bold uppercase leading-snug tracking-wide text-ink-soft">
+                We turn attention into
+                <br /> paying customers.
+              </p>
+            </div>
+
+            {/* centrepiece (inline, no modal) */}
+            <div className="aspect-[3/4] w-full">
+              <CenterReel />
+            </div>
+
+            {/* right */}
+            <div className="flex flex-col justify-between gap-7">
+              <Words>Agency</Words>
+              <div>
+                <DualCTAs />
+                <a
+                  href="#work"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline"
+                >
+                  See our work
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* floating proof cards */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease }}
+            className="relative z-10 -mt-12 grid grid-cols-[1.3fr_1fr_0.8fr_0.8fr] items-end gap-4 pb-16"
+          >
+            {/* stat card (links to work — no modal) */}
+            <a
+              href="#work"
+              className="group relative flex h-40 items-end overflow-hidden rounded-2xl border border-white/15 bg-night p-4 text-left shadow-xl shadow-ink/20"
+            >
+              <video
+                src={STAT.video}
+                poster={posterFor(STAT.video)}
+                muted
+                loop
+                playsInline
+                preload="none"
+                tabIndex={-1}
+                className="absolute inset-0 h-full w-full object-cover opacity-70 transition-transform duration-500 ease-out-strong group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-night via-night/40 to-transparent" />
+              <div className="relative">
+                <p className="font-display text-lg font-bold text-white">50+ projects delivered</p>
+                <p className="text-xs text-white/70">3× average client growth</p>
+              </div>
+            </a>
+
+            {/* trusted card */}
+            <div className="flex h-40 flex-col justify-between rounded-2xl border border-ink/10 bg-white p-4 shadow-xl shadow-ink/5">
+              <div className="flex -space-x-2">
+                {[AV1, AV2, CENTER].map((t) => (
+                  <span key={t.id} className="h-8 w-8 overflow-hidden rounded-full border-2 border-white">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={posterFor(t.video)} alt="" className="h-full w-full object-cover" />
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm font-medium leading-snug text-ink">
+                Trusted by startups &amp; brands across many fields.
+              </p>
+            </div>
+
+            {/* websites we built — photos */}
+            <SiteCard site={WEBSITES[0]} className="h-40" />
+            <SiteCard site={WEBSITES[1]} className="h-40" />
+          </motion.div>
+        </div>
       </div>
-
-      <VideoModal
-        project={
-          active ? { title: active.title, client: active.client, videoSrc: active.video } : null
-        }
-        onClose={() => setActive(null)}
-      />
     </section>
   );
 }

@@ -9,6 +9,13 @@ export const SITE = {
   whatsappUrl:
     "https://wa.me/18299745141?text=" +
     encodeURIComponent("Hi Jarms 👋 I'd like a video / website."),
+  // dual-service intents — so the visitor lands in the right conversation instantly
+  whatsappVideo:
+    "https://wa.me/18299745141?text=" +
+    encodeURIComponent("Hi Jarms 👋 I want a VIDEO for my business."),
+  whatsappWeb:
+    "https://wa.me/18299745141?text=" +
+    encodeURIComponent("Hi Jarms 👋 I want a WEBSITE for my business."),
   // TODO: replace with the agency's real Calendly scheduling link
   calendlyUrl: "https://calendly.com/jarms-marketing/discovery-call",
   socials: [
