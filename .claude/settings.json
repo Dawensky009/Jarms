@@ -51,7 +51,8 @@
       "Read(//d/Project/Jarms/**)",
       "Bash(C:/Users/Dawensky/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe -y -ss 5 -t 9 -i star-english.mp4 -vf scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,setsar=1,fps=30 -an -c:v libx264 -preset slow -crf 19 -pix_fmt yuv420p _c1.mp4)",
       "Bash(C:/Users/Dawensky/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe -y -ss 0 -t 14 -i shake-up.mp4 -vf scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,setsar=1,fps=30 -an -c:v libx264 -preset slow -crf 19 -pix_fmt yuv420p _c2.mp4)",
-      "Bash(C:/Users/Dawensky/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe -y -i _c1.mp4 -i _c2.mp4 -filter_complex [0:v][1:v]concat=n=2:v=1:a=0[v] -map [v] -c:v libx264 -preset slow -crf 19 -pix_fmt yuv420p -movflags +faststart hero-mix.mp4)"
+      "Bash(C:/Users/Dawensky/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe -y -i _c1.mp4 -i _c2.mp4 -filter_complex [0:v][1:v]concat=n=2:v=1:a=0[v] -map [v] -c:v libx264 -preset slow -crf 19 -pix_fmt yuv420p -movflags +faststart hero-mix.mp4)",
+      "PowerShell($ok=$false; foreach\\($i in 1..30\\){ try{ if\\(\\(Invoke-WebRequest -UseBasicParsing http://localhost:3000 -TimeoutSec 5\\).StatusCode -eq 200\\){ $ok=$true; break } }catch{}; Start-Sleep -Seconds 2 }; if\\($ok\\){\"UP\"}else{\"STILL_DOWN\"})"
     ]
   }
 }

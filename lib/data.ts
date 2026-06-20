@@ -84,6 +84,7 @@ export const SERVICES: Service[] = [
       "The ad that stops the thumb. We grab attention in the first 3 seconds, so people watch to the end and tap “buy” instead of scrolling past.",
     bullets: ["Reels, TikTok & Shorts", "Hook-first scripting", "A/B-ready variants"],
     video: "/videos/anna-bbq.mp4",
+    image: "/img/svc-ad.jpg",
     tone: "from-[#3a2c10] to-[#0e1116]",
   },
   {
@@ -96,6 +97,7 @@ export const SERVICES: Service[] = [
       "The film that makes people remember your name. Real story, motion and sound that make your business look as good as it actually is.",
     bullets: ["Creative direction", "Motion & sound design", "Broadcast-ready"],
     video: "/videos/cdm.mp4",
+    image: "/img/svc-film.jpg",
     tone: "from-[#13314a] to-[#0e1116]",
   },
   {
@@ -108,6 +110,7 @@ export const SERVICES: Service[] = [
       "Show your product like it’s worth every cent. Clean shots and real-life moments that answer “why should I buy this?” and turn lookers into buyers.",
     bullets: ["Studio & lifestyle", "Feature highlights", "E-commerce ready"],
     video: "/videos/shake-up.mp4",
+    image: "/img/svc-product.jpg",
     tone: "from-[#123b3a] to-[#0e1116]",
   },
   {

@@ -1,26 +1,18 @@
-"use client";
-
-import { useState } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
-import { SITE, TILES, type Tile } from "@/lib/data";
+import { SITE } from "@/lib/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
-import { VideoModal } from "@/components/ui/VideoModal";
 
-const t = (id: string) => TILES.find((x) => x.id === id) ?? TILES[0];
-
-type Card = { n: string; title: string; desc?: string; subs: string; tile?: Tile };
+type Card = { n: string; title: string; desc?: string; subs: string; image?: string };
 
 const CARDS: Card[] = [
   { n: "01", title: "Build a Brand", desc: "Make your business look as good as it actually is.", subs: "03" },
   { n: "02", title: "Grow Your Audience", desc: "Show up consistently so the right people remember you.", subs: "03" },
-  { n: "03", title: "Make Content People Care About", subs: "04", tile: t("makaya") },
+  { n: "03", title: "Make Content People Care About", subs: "04", image: "/img/content.jpg" },
   { n: "04", title: "Turn Views Into Sales", desc: "Attention is nice. Paying customers are better.", subs: "03" },
 ];
 
-function ServiceCard({ card, onOpen }: { card: Card; onOpen: (tt: Tile) => void }) {
-  const hover = useHoverPlay();
+function ServiceCard({ card }: { card: Card }) {
   return (
     <RevealItem>
       <div className="group">
@@ -35,30 +27,19 @@ function ServiceCard({ card, onOpen }: { card: Card; onOpen: (tt: Tile) => void 
             </span>
           </div>
 
-          {card.tile ? (
+          {card.image ? (
             <div className="mt-4 flex flex-1 flex-col">
               <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-tight text-ink">
                 {card.title}
               </h3>
-              <button
-                onClick={() => onOpen(card.tile!)}
-                onMouseEnter={hover.onMouseEnter}
-                onMouseLeave={hover.onMouseLeave}
-                aria-label={`Play ${card.tile.title}`}
-                className="relative mt-3 flex-1 cursor-pointer overflow-hidden rounded-2xl bg-night"
-              >
-                <video
-                  ref={hover.videoRef}
-                  src={card.tile.video}
-                  poster={posterFor(card.tile.video)}
-                  muted
-                  loop
-                  playsInline
-                  preload="none"
-                  tabIndex={-1}
+              <div className="relative mt-3 flex-1 overflow-hidden rounded-2xl bg-night">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={card.image}
+                  alt={card.title}
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
                 />
-              </button>
+              </div>
             </div>
           ) : (
             <div className="flex flex-1 flex-col justify-end">
@@ -85,8 +66,6 @@ function ServiceCard({ card, onOpen }: { card: Card; onOpen: (tt: Tile) => void 
 }
 
 export function Achieve() {
-  const [active, setActive] = useState<Tile | null>(null);
-
   return (
     <section id="achieve" className="bg-white">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
@@ -124,17 +103,10 @@ export function Achieve() {
         {/* service cards */}
         <RevealGroup className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {CARDS.map((c) => (
-            <ServiceCard key={c.n} card={c} onOpen={setActive} />
+            <ServiceCard key={c.n} card={c} />
           ))}
         </RevealGroup>
       </div>
-
-      <VideoModal
-        project={
-          active ? { title: active.title, client: active.client, videoSrc: active.video } : null
-        }
-        onClose={() => setActive(null)}
-      />
     </section>
   );
 }
