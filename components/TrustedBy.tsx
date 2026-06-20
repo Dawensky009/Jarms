@@ -1,32 +1,42 @@
-"use client";
-
-import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { SITE, TILES, type Tile } from "@/lib/data";
+import { SITE } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
-import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
-import { VideoModal } from "@/components/ui/VideoModal";
-
-const t = (id: string) => TILES.find((x) => x.id === id) ?? TILES[0];
 
 type CaseItem = {
   label: string;
   pill: string;
   title: string;
   sub: string;
-  tile: Tile;
+  image: string;
   down?: boolean;
 };
 
 // placeholder metrics — swap for real numbers once you have them
 const CASES: CaseItem[] = [
-  { label: "E-commerce & D2C Brands", pill: "Impact", title: "Food & drink campaigns", sub: "3× more engagement on average", tile: t("anna") },
-  { label: "Growth & Reach", pill: "Reach", title: "More views, more sales", sub: "Up to 2× conversion lift", tile: t("blind-eye"), down: true },
-  { label: "Corporate & Enterprise Teams", pill: "Retention", title: "Clients who keep coming back", sub: "Built to convert, not just to look nice", tile: t("astreya") },
+  {
+    label: "E-commerce & D2C Brands",
+    pill: "Impact",
+    title: "Food & drink campaigns",
+    sub: "3× more engagement on average",
+    image: "/trust/food.jpg",
+  },
+  {
+    label: "Growth & Reach",
+    pill: "Reach",
+    title: "More views, more sales",
+    sub: "Up to 2× conversion lift",
+    image: "/trust/growth.jpg",
+    down: true,
+  },
+  {
+    label: "Corporate & Enterprise Teams",
+    pill: "Retention",
+    title: "Clients who keep coming back",
+    sub: "Built to convert, not just to look nice",
+    image: "/trust/corporate.jpg",
+  },
 ];
-
-const LEFT = t("makaya");
 
 function ArrowChip() {
   return (
@@ -36,29 +46,17 @@ function ArrowChip() {
   );
 }
 
-function CaseCard({ item, onOpen }: { item: CaseItem; onOpen: (tt: Tile) => void }) {
-  const hover = useHoverPlay();
+function CaseCard({ item }: { item: CaseItem }) {
   return (
-    <div className={item.down ? "lg:mt-24" : ""}>
-      <button
-        onClick={() => onOpen(item.tile)}
-        onMouseEnter={hover.onMouseEnter}
-        onMouseLeave={hover.onMouseLeave}
-        aria-label={`Play ${item.title}`}
-        className="group relative block aspect-[3/4] w-full cursor-pointer overflow-hidden rounded-3xl border border-ink/10 bg-night text-left transition-transform duration-300 ease-out-strong hover:-translate-y-1.5"
-      >
-        <video
-          ref={hover.videoRef}
-          src={item.tile.video}
-          poster={posterFor(item.tile.video)}
-          muted
-          loop
-          playsInline
-          preload="none"
-          tabIndex={-1}
+    <a href="#work" className={`group block ${item.down ? "lg:mt-24" : ""}`}>
+      <div className="relative block aspect-[3/4] w-full overflow-hidden rounded-3xl border border-ink/10 bg-night transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={item.image}
+          alt={item.title}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/10 to-transparent" />
         <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink">
           {item.pill}
         </span>
@@ -66,22 +64,19 @@ function CaseCard({ item, onOpen }: { item: CaseItem; onOpen: (tt: Tile) => void
           <p className="font-display text-lg font-bold leading-tight text-white">{item.title}</p>
           <p className="mt-1 text-sm text-white/70">{item.sub}</p>
         </div>
-      </button>
+      </div>
 
-      <div className="group mt-4 flex items-center justify-between">
+      <div className="mt-4 flex items-center justify-between">
         <p className="max-w-[11rem] font-display text-base font-bold uppercase leading-tight tracking-tight text-ink">
           {item.label}
         </p>
         <ArrowChip />
       </div>
-    </div>
+    </a>
   );
 }
 
 export function TrustedBy() {
-  const [active, setActive] = useState<Tile | null>(null);
-  const leftHover = useHoverPlay();
-
   return (
     <section className="bg-white">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
@@ -116,29 +111,21 @@ export function TrustedBy() {
             <p className="mt-5 max-w-[11rem] font-display text-base font-bold uppercase leading-tight tracking-tight text-ink">
               Startups &amp; Tech Companies
             </p>
-            <button
-              onClick={() => setActive(LEFT)}
-              onMouseEnter={leftHover.onMouseEnter}
-              onMouseLeave={leftHover.onMouseLeave}
-              aria-label={`Play ${LEFT.title}`}
-              className="group relative mt-5 block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-ink/10 bg-night text-left"
+            <a
+              href="#work"
+              className="group relative mt-5 block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-ink/10 bg-night"
             >
-              <video
-                ref={leftHover.videoRef}
-                src={LEFT.video}
-                poster={posterFor(LEFT.video)}
-                muted
-                loop
-                playsInline
-                preload="none"
-                tabIndex={-1}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/trust/startups.jpg"
+                alt="Startups and tech teams"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-night/85 to-transparent" />
               <p className="absolute inset-x-0 bottom-0 p-3 text-xs text-white/80">
                 Trusted by many startups &amp; brands across fields.
               </p>
-            </button>
+            </a>
 
             <a
               href={SITE.whatsappUrl}
@@ -157,18 +144,11 @@ export function TrustedBy() {
           {/* case cards */}
           {CASES.map((c) => (
             <Reveal key={c.label}>
-              <CaseCard item={c} onOpen={setActive} />
+              <CaseCard item={c} />
             </Reveal>
           ))}
         </div>
       </div>
-
-      <VideoModal
-        project={
-          active ? { title: active.title, client: active.client, videoSrc: active.video } : null
-        }
-        onClose={() => setActive(null)}
-      />
     </section>
   );
 }
