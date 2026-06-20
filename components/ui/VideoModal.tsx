@@ -48,7 +48,7 @@ export function VideoModal({
           <div className="absolute inset-0 bg-night/85 backdrop-blur-sm" />
 
           <motion.div
-            className="relative w-full max-w-4xl"
+            className="relative mx-auto w-full max-w-sm"
             initial={{ opacity: 0, scale: 0.96, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 16 }}
@@ -71,10 +71,10 @@ export function VideoModal({
               </button>
             </div>
 
-            <div className="aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
+            <div className="aspect-[9/16] max-h-[74vh] w-full overflow-hidden rounded-2xl border border-white/10 bg-black">
               {project.videoSrc ? (
                 <video
-                  className="h-full w-full bg-black"
+                  className="h-full w-full bg-black object-contain"
                   src={project.videoSrc}
                   poster={posterFor(project.videoSrc)}
                   controls

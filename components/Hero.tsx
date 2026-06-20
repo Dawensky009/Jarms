@@ -164,6 +164,13 @@ export function Hero() {
             className="mt-6 pb-12"
           >
             <DualCTAs />
+            <a
+              href="#work"
+              className="mx-auto mt-4 flex w-fit items-center gap-1.5 text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline"
+            >
+              See our work
+              <ArrowRight className="h-4 w-4" />
+            </a>
             <p className="mt-3 text-center text-xs text-ink-muted">Free quote in 24h · No obligation</p>
             <TrustLine className="mt-5" />
           </motion.div>
