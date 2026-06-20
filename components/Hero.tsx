@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clapperboard, Globe, Star } from "lucide-react";
 import { SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
 import { posterFor } from "@/components/ui/useHoverPlay";
-import { MobileVideoSwipe } from "@/components/ui/MobileVideoSwipe";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -151,17 +150,8 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1, ease }}
-            className="mt-6"
-          >
-            <MobileVideoSwipe tiles={TILES} />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.18, ease }}
-            className="mt-6 pb-12"
+            transition={{ duration: 0.6, delay: 0.12, ease }}
+            className="mt-8 pb-12"
           >
             <DualCTAs />
             <a
@@ -191,9 +181,8 @@ export function Hero() {
                 <br />
                 Video &amp;
               </Words>
-              <p className="self-end max-w-[15rem] font-display text-sm font-bold uppercase leading-snug tracking-wide text-ink-soft">
-                We turn attention into
-                <br /> paying customers.
+              <p className="self-end max-w-[17rem] text-sm leading-snug text-ink-muted">
+                Scroll-stopping reels and sites that turn attention into sales — fast.
               </p>
             </div>
 
