@@ -3,20 +3,20 @@ import { SITE } from "@/lib/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-type Card = { n: string; title: string; desc?: string; subs: string; image?: string };
+type Card = { n: string; title: string; desc: string; subs: string; image: string };
 
 const CARDS: Card[] = [
-  { n: "01", title: "Build a Brand", desc: "Make your business look as good as it actually is.", subs: "03" },
-  { n: "02", title: "Grow Your Audience", desc: "Show up consistently so the right people remember you.", subs: "03" },
-  { n: "03", title: "Make Content People Care About", subs: "04", image: "/img/content.jpg" },
-  { n: "04", title: "Turn Views Into Sales", desc: "Attention is nice. Paying customers are better.", subs: "03" },
+  { n: "01", title: "Build a Brand", desc: "Make your business look as good as it actually is.", subs: "03", image: "/img/brand.jpg" },
+  { n: "02", title: "Grow Your Audience", desc: "Show up consistently so the right people remember you.", subs: "03", image: "/img/audience.jpg" },
+  { n: "03", title: "Make Content People Care About", desc: "Real stories and emotion that actually connect.", subs: "04", image: "/img/content.jpg" },
+  { n: "04", title: "Turn Views Into Sales", desc: "Attention is nice. Paying customers are better.", subs: "03", image: "/img/sales.jpg" },
 ];
 
 function ServiceCard({ card }: { card: Card }) {
   return (
     <RevealItem>
       <div className="group">
-        <div className="relative flex h-[21rem] flex-col overflow-hidden rounded-3xl border border-ink/10 bg-mist p-5 transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
+        <div className="relative flex h-[23rem] flex-col overflow-hidden rounded-3xl border border-ink/10 bg-mist p-5 transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
           {/* top row */}
           <div className="flex items-center justify-between">
             <span className="rounded-full border border-ink/15 bg-white px-3 py-1 text-xs font-medium text-ink-soft">
@@ -27,28 +27,18 @@ function ServiceCard({ card }: { card: Card }) {
             </span>
           </div>
 
-          {card.image ? (
-            <div className="mt-4 flex flex-1 flex-col">
-              <h3 className="font-display text-xl font-bold uppercase leading-tight tracking-tight text-ink">
-                {card.title}
-              </h3>
-              <div className="relative mt-3 flex-1 overflow-hidden rounded-2xl bg-night">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
-                />
-              </div>
-            </div>
-          ) : (
-            <div className="flex flex-1 flex-col justify-end">
-              <h3 className="whitespace-nowrap font-display text-[clamp(2rem,3.4vw,3rem)] font-bold uppercase leading-none tracking-tight text-ink">
-                {card.title}
-              </h3>
-              <p className="mt-4 text-sm text-ink-muted">{card.desc}</p>
-            </div>
-          )}
+          <h3 className="mt-4 font-display text-lg font-bold uppercase leading-tight tracking-tight text-ink">
+            {card.title}
+          </h3>
+          <p className="mt-1.5 text-sm text-ink-muted">{card.desc}</p>
+          <div className="relative mt-3 flex-1 overflow-hidden rounded-2xl bg-night">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={card.image}
+              alt={card.title}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
+            />
+          </div>
         </div>
 
         {/* below the card */}
