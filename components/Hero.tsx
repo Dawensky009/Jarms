@@ -178,7 +178,7 @@ export function Hero() {
             className="grid items-stretch gap-8 lg:grid-cols-[1fr_minmax(290px,360px)_1fr]"
           >
             {/* left */}
-            <div className="flex flex-col gap-7 text-right">
+            <div className="flex flex-col justify-between gap-7 text-right">
               <Words>
                 Creative
                 <br />
@@ -190,24 +190,24 @@ export function Hero() {
               </p>
             </div>
 
-            {/* centrepiece (inline, no modal) */}
-            <div className="aspect-[3/4] w-full">
-              <CenterReel />
+            {/* centrepiece (inline, no modal) — CTAs sit right under it */}
+            <div className="flex flex-col gap-5">
+              <div className="aspect-[3/4] w-full">
+                <CenterReel />
+              </div>
+              <DualCTAs />
             </div>
 
             {/* right */}
             <div className="flex flex-col justify-between gap-7">
               <Words>Agency</Words>
-              <div>
-                <DualCTAs />
-                <a
-                  href="#work"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline"
-                >
-                  See our work
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
+              <a
+                href="#work"
+                className="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline"
+              >
+                See our work
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
           </motion.div>
 
@@ -216,7 +216,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease }}
-            className="relative z-10 -mt-12 grid grid-cols-[1.3fr_1fr_0.8fr_0.8fr] items-end gap-4 pb-16"
+            className="relative z-10 mt-10 grid grid-cols-[1.3fr_1fr_0.8fr_0.8fr] items-end gap-4 pb-16"
           >
             {/* stat card (links to work — no modal) */}
             <a

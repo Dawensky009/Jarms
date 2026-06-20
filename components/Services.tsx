@@ -1,81 +1,101 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Play } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Clapperboard,
+  Film,
+  Globe,
+  Package,
+  type LucideIcon,
+} from "lucide-react";
 import { SERVICES, SITE, type Service } from "@/lib/data";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { posterFor } from "@/components/ui/useHoverPlay";
-import { VideoModal } from "@/components/ui/VideoModal";
 
-function ServiceMedia({ service }: { service: Service }) {
+// one clear icon per service so the page is scannable at a glance
+const ICONS: Record<string, LucideIcon> = {
+  ad: Clapperboard,
+  film: Film,
+  product: Package,
+  web: Globe,
+};
+
+function ServiceCard({ service }: { service: Service }) {
+  const [open, setOpen] = useState(false);
+  const Icon = ICONS[service.id] ?? Clapperboard;
   const photo = service.image ?? (service.video ? posterFor(service.video) : "");
-  return (
-    <>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={photo}
-        alt={`${service.title} ${service.highlight}`}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-night/25 to-transparent" />
-      <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 shadow-lg transition-opacity duration-300 group-hover:opacity-100">
-        {service.url ? <ArrowUpRight className="h-4 w-4" /> : <Play className="ml-0.5 h-4 w-4 fill-current" />}
-      </span>
-    </>
-  );
-}
+  // route the visitor straight to the right conversation
+  const cta = service.id === "web" ? SITE.whatsappWeb : SITE.whatsappVideo;
+  const ctaLabel = service.id === "web" ? "Get a website" : "Get this video";
 
-function ServiceCard({ service, onPlay }: { service: Service; onPlay: (s: Service) => void }) {
   return (
     <RevealItem>
-      <div className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
-        {service.url ? (
-          <a
-            href={service.url}
-            aria-label={`${service.title} ${service.highlight}`}
-            className="relative block aspect-video w-full overflow-hidden bg-night"
-          >
-            <ServiceMedia service={service} />
-          </a>
-        ) : (
-          <button
-            onClick={() => onPlay(service)}
-            aria-label={`Watch ${service.title} ${service.highlight}`}
-            className="relative block aspect-video w-full cursor-pointer overflow-hidden bg-night"
-          >
-            <ServiceMedia service={service} />
-          </button>
-        )}
+      <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
+        {/* photo tied to the service */}
+        <div className="relative aspect-[16/10] overflow-hidden bg-night">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={photo}
+            alt={`${service.title} ${service.highlight}`}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-night/30 to-transparent" />
+          <span className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-gold text-ink shadow-lg">
+            <Icon className="h-5 w-5" />
+          </span>
+          <span className="absolute right-4 top-4 font-display text-sm font-bold text-white/80">
+            {service.index}
+          </span>
+        </div>
 
         <div className="flex flex-1 flex-col p-6 sm:p-7">
-          <div className="flex items-center justify-between">
-            <span className="font-display text-sm font-bold text-ink-muted">{service.index}</span>
-            <ArrowUpRight className="h-4 w-4 text-ink-muted" />
-          </div>
-          <h3 className="mt-4 font-display text-xl font-bold uppercase tracking-tight text-ink sm:text-2xl">
+          <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink sm:text-2xl">
             {service.title} <span className="text-gold-deep">{service.highlight}</span>
           </h3>
-          <p className="mt-3 text-sm text-ink-muted">{service.blurb}</p>
+          {/* one scannable line — the full pitch lives in the accordion */}
+          <p className="mt-2 text-sm font-medium text-ink-soft">{service.short}</p>
 
-          <ul className="mt-5 flex flex-wrap gap-2">
-            {service.bullets.map((b) => (
-              <li
-                key={b}
-                className="rounded-full border border-ink/10 bg-mist px-3 py-1 text-xs font-medium text-ink-soft"
-              >
-                {b}
-              </li>
-            ))}
-          </ul>
+          {/* accordion: details hidden until asked for */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="mt-4 flex w-full items-center justify-between border-t border-ink/10 pt-4 text-sm font-semibold text-ink transition-colors hover:text-gold-deep"
+          >
+            What&apos;s included
+            <ChevronDown
+              className={`h-4 w-4 transition-transform duration-300 ease-out-strong ${open ? "rotate-180" : ""}`}
+            />
+          </button>
+          <div
+            className={`grid transition-[grid-template-rows] duration-300 ease-out-strong ${
+              open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+            }`}
+          >
+            <div className="overflow-hidden">
+              <p className="pt-3 text-sm text-ink-muted">{service.blurb}</p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {service.bullets.map((b) => (
+                  <li
+                    key={b}
+                    className="rounded-full border border-ink/10 bg-mist px-3 py-1 text-xs font-medium text-ink-soft"
+                  >
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
           <a
-            href={SITE.whatsappUrl}
+            href={cta}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-gold-deep"
+            className="group/cta mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-gold-deep"
           >
-            Start a project
-            <ArrowUpRight className="h-4 w-4" />
+            {ctaLabel}
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 ease-out-strong group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
           </a>
         </div>
       </div>
@@ -84,8 +104,6 @@ function ServiceCard({ service, onPlay }: { service: Service; onPlay: (s: Servic
 }
 
 export function Services() {
-  const [active, setActive] = useState<Service | null>(null);
-
   return (
     <section id="services" className="bg-white">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
@@ -101,23 +119,10 @@ export function Services() {
 
         <RevealGroup className="mt-12 grid gap-5 sm:grid-cols-2">
           {SERVICES.map((service) => (
-            <ServiceCard key={service.id} service={service} onPlay={setActive} />
+            <ServiceCard key={service.id} service={service} />
           ))}
         </RevealGroup>
       </div>
-
-      <VideoModal
-        project={
-          active && active.video
-            ? {
-                title: `${active.title} ${active.highlight}`,
-                client: "Jarms Marketing",
-                videoSrc: active.video,
-              }
-            : null
-        }
-        onClose={() => setActive(null)}
-      />
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { StickyCTA } from "@/components/ui/StickyCTA";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { TrustedBy } from "@/components/TrustedBy";
@@ -26,6 +27,7 @@ export default function Home() {
         <Testimonials />
       </main>
       <Footer />
+      <StickyCTA />
     </>
   );
 }

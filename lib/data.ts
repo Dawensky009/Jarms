@@ -63,6 +63,7 @@ export type Service = {
   index: string;
   title: string;
   highlight: string; // word(s) coloured with the accent
+  short: string; // one-line scannable promise (shown on the card)
   blurb: string;
   bullets: string[];
   video?: string; // local mp4 — used as the still photo (poster) for the card
@@ -77,6 +78,7 @@ export const SERVICES: Service[] = [
     index: "01",
     title: "AI Ad",
     highlight: "Videos",
+    short: "Thumb-stopping ads watched to the end.",
     blurb:
       "The ad that stops the thumb. We grab attention in the first 3 seconds, so people watch to the end and tap “buy” instead of scrolling past.",
     bullets: ["Reels, TikTok & Shorts", "Hook-first scripting", "A/B-ready variants"],
@@ -88,6 +90,7 @@ export const SERVICES: Service[] = [
     index: "02",
     title: "Commercial &",
     highlight: "Brand Films",
+    short: "Films that make people remember your name.",
     blurb:
       "The film that makes people remember your name. Real story, motion and sound that make your business look as good as it actually is.",
     bullets: ["Creative direction", "Motion & sound design", "Broadcast-ready"],
@@ -99,6 +102,7 @@ export const SERVICES: Service[] = [
     index: "03",
     title: "Product",
     highlight: "Videos",
+    short: "Product videos that turn lookers into buyers.",
     blurb:
       "Show your product like it’s worth every cent. Clean shots and real-life moments that answer “why should I buy this?” and turn lookers into buyers.",
     bullets: ["Studio & lifestyle", "Feature highlights", "E-commerce ready"],
@@ -110,6 +114,7 @@ export const SERVICES: Service[] = [
     index: "04",
     title: "Website",
     highlight: "Creation",
+    short: "A site that sells for you 24/7.",
     blurb:
       "A website that sells for you 24/7 — fast, easy to use, and done for you. The one you’re reading right now? We built it.",
     bullets: ["Conversion-focused design", "Next.js performance", "SEO & analytics"],
