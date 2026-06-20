@@ -32,7 +32,7 @@ export function AgencyBlock() {
                 <span className="text-gold">blend in.</span>
               </h2>
               <p className="mt-5 max-w-md text-white/55">
-                We mix AI speed with real creative taste — so you get scroll-stopping work
+                We move fast and sweat the details — so you get scroll-stopping work
                 in days, not months, at a price that actually makes sense.
               </p>
 

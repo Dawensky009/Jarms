@@ -55,7 +55,10 @@
       "PowerShell($ok=$false; foreach\\($i in 1..30\\){ try{ if\\(\\(Invoke-WebRequest -UseBasicParsing http://localhost:3000 -TimeoutSec 5\\).StatusCode -eq 200\\){ $ok=$true; break } }catch{}; Start-Sleep -Seconds 2 }; if\\($ok\\){\"UP\"}else{\"STILL_DOWN\"})",
       "Bash(curl -sL \"https://images.unsplash.com/photo-1614036634955-ae5e90f9b9eb?w=1280&q=80&auto=format&fit=crop\" -o public/img/brand.jpg)",
       "Bash(curl -sL \"https://images.unsplash.com/photo-1506755594592-349d12a7c52a?w=1280&q=80&auto=format&fit=crop\" -o public/img/audience.jpg)",
-      "Bash(curl -sL \"https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1280&q=80&auto=format&fit=crop\" -o public/img/sales.jpg)"
+      "Bash(curl -sL \"https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1280&q=80&auto=format&fit=crop\" -o public/img/sales.jpg)",
+      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" push origin main 2>&1)",
+      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" status -sb)",
+      "PowerShell(\"---\")"
     ],
     "additionalDirectories": [
       "d:\\Project\\Jarms\\.git"
