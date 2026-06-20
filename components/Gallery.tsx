@@ -1,11 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Play, ArrowUpRight } from "lucide-react";
 import { TILES, type Tile } from "@/lib/data";
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }) {
   const hover = useHoverPlay();
@@ -50,6 +53,18 @@ function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }
 
 export function Gallery() {
   const [active, setActive] = useState<Tile | null>(null);
+  const [filter, setFilter] = useState<string>("All");
+  const reduce = useReducedMotion();
+
+  // tabs derived from the real videos — never shows an empty category
+  const categories = useMemo(
+    () => ["All", ...Array.from(new Set(TILES.map((t) => t.category)))],
+    []
+  );
+  const filtered = useMemo(
+    () => (filter === "All" ? TILES : TILES.filter((t) => t.category === filter)),
+    [filter]
+  );
 
   return (
     <section id="work" className="bg-white">
@@ -66,18 +81,50 @@ export function Gallery() {
               </h2>
             </div>
             <p className="max-w-xs text-sm text-ink-muted">
-              Hover to preview, tap to watch. Real work for real businesses.
+              Filter by category. Hover to preview, tap to watch.
             </p>
           </div>
         </Reveal>
 
-        <RevealGroup className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
-          {TILES.map((tile) => (
-            <RevealItem key={tile.id}>
-              <GalleryTile tile={tile} onPlay={setActive} />
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        {/* category filter tabs */}
+        <Reveal>
+          <div className="mt-8 flex flex-wrap gap-2">
+            {categories.map((cat) => {
+              const activeTab = filter === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setFilter(cat)}
+                  aria-pressed={activeTab}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 ease-out-strong active:scale-95 ${
+                    activeTab
+                      ? "bg-ink text-white"
+                      : "border border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink"
+                  }`}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
+
+        <motion.div layout className="mt-8 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
+          <AnimatePresence mode="popLayout">
+            {filtered.map((tile) => (
+              <motion.div
+                key={tile.id}
+                layout
+                initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.3, ease }}
+              >
+                <GalleryTile tile={tile} onPlay={setActive} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
 
       <VideoModal
