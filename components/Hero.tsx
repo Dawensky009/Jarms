@@ -129,7 +129,7 @@ export function Hero() {
 
       <div className="container-px relative z-10 mx-auto max-w-container">
         <h1 className="sr-only">
-          Jarms Marketing — a creative video &amp; web agency that turns attention into paying customers.
+          Jarms Marketing — an AI-powered video &amp; web agency that turns attention into paying customers.
         </h1>
 
         {/* ===================== MOBILE (fold = hook → swipe → CTAs) ===================== */}
@@ -141,7 +141,7 @@ export function Hero() {
             className="text-center"
           >
             <h2 className="font-display text-[clamp(1.9rem,8.5vw,2.7rem)] font-bold uppercase leading-[1.02] tracking-tight text-ink">
-              Video &amp; websites that <span className="text-gold-deep">get you customers.</span>
+              AI video &amp; websites that <span className="text-gold-deep">get you customers.</span>
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-sm text-ink-muted">
               Scroll-stopping reels and sites that turn attention into sales — fast.
@@ -180,9 +180,9 @@ export function Hero() {
             {/* left */}
             <div className="flex flex-col justify-between gap-7 text-right">
               <Words>
-                Creative
+                AI
                 <br />
-                Digital
+                Video &amp;
               </Words>
               <p className="self-end max-w-[15rem] font-display text-sm font-bold uppercase leading-snug tracking-wide text-ink-soft">
                 We turn attention into
@@ -200,7 +200,7 @@ export function Hero() {
 
             {/* right */}
             <div className="flex flex-col justify-between gap-7">
-              <Words>Agency</Words>
+              <Words>Websites</Words>
               <a
                 href="#work"
                 className="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline"

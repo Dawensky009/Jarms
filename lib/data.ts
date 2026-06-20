@@ -29,6 +29,7 @@ export const SITE = {
 export const NAV_LINKS = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
+  { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
 ];
 
@@ -189,8 +190,11 @@ export type Plan = {
   price: string;
   cadence: string;
   tagline: string;
+  perUnit?: string; // mental-accounting reframe shown under the price
+  note?: string; // social-proof / context microcopy
   features: string[];
   cta: string;
+  intent?: "video" | "web"; // which WhatsApp conversation the CTA opens
   popular?: boolean;
 };
 
@@ -199,7 +203,8 @@ export const PLANS: Plan[] = [
     name: "Starter",
     price: "$490",
     cadence: "per video",
-    tagline: "Perfect for a single ad or promo",
+    perUnit: "One-time · yours to keep",
+    tagline: "Test the waters with a single ad or promo",
     features: [
       "1 finished video",
       "Up to 30 seconds",
@@ -207,12 +212,15 @@ export const PLANS: Plan[] = [
       "Vertical + square exports",
     ],
     cta: "Get started",
+    intent: "video",
   },
   {
     name: "Growth",
     price: "$1,900",
     cadence: "per month",
-    tagline: "Most popular — for businesses posting every week",
+    perUnit: "≈ $475 / video",
+    note: "Where most brands start.",
+    tagline: "For businesses posting every week",
     features: [
       "4 videos / month",
       "Ad scripting & strategy",
@@ -221,13 +229,15 @@ export const PLANS: Plan[] = [
       "Priority turnaround",
     ],
     cta: "Start with Growth",
+    intent: "video",
     popular: true,
   },
   {
     name: "Studio",
     price: "Custom",
     cadence: "video + web",
-    tagline: "Video + website, handled together",
+    perUnit: "Tailored to your scope",
+    tagline: "Video + website, handled by one team",
     features: [
       "Everything in Growth",
       "Website design & build",
@@ -235,6 +245,7 @@ export const PLANS: Plan[] = [
       "Dedicated producer",
     ],
     cta: "Book a call",
+    intent: "web",
   },
 ];
 

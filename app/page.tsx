@@ -9,6 +9,7 @@ import { Gallery } from "@/components/Gallery";
 import { WebPortfolio } from "@/components/WebPortfolio";
 import { Services } from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
+import { Pricing } from "@/components/Pricing";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         <WebPortfolio />
         <Services />
         <Testimonials />
+        <Pricing />
       </main>
       <Footer />
       <StickyCTA />
