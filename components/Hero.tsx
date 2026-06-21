@@ -169,6 +169,14 @@ export function Hero() {
 
         {/* ===================== DESKTOP ===================== */}
         <div className="hidden lg:block">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease }}
+            className="mb-7 text-center text-sm font-semibold uppercase tracking-[0.22em] text-gold-deep"
+          >
+            Get seen · Get remembered · Get paid
+          </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
