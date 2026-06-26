@@ -46,6 +46,7 @@ export type Tile = {
 
 // Real client work. The thumbnail shows the first frame; full video plays on click.
 export const TILES: Tile[] = [
+  { id: "patricia", title: "Patricia", client: "Beauty & spa", category: "Commercial", video: "/videos/patricia.mp4", tone: "from-[#13314a] to-[#0e1116]" },
   { id: "anna", title: "Anna BBQ", client: "Food brand", category: "Commercial", video: "/videos/anna-bbq.mp4", tone: "from-[#3a2c10] to-[#0e1116]" },
   { id: "astreya", title: "Astreya", client: "Brand film", category: "Brand", video: "/videos/astreya.mp4", tone: "from-[#13314a] to-[#0e1116]" },
   { id: "car", title: "Car Link Up", client: "Automotive", category: "Event", video: "/videos/car-link-up.mp4", tone: "from-[#2a1840] to-[#0e1116]" },

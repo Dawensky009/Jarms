@@ -58,7 +58,10 @@
       "Bash(curl -sL \"https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1280&q=80&auto=format&fit=crop\" -o public/img/sales.jpg)",
       "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" push origin main 2>&1)",
       "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" status -sb)",
-      "PowerShell(\"---\")"
+      "PowerShell(\"---\")",
+      "Bash(cd /d/Project/Jarms 2>/dev/null; echo \"=== project search ===\"; find . -iname \"*patricia*\" -not -path \"./node_modules/*\" -not -path \"./.next/*\" 2>/dev/null; echo \"=== Ressources ===\"; ls Ressources/ 2>/dev/null; echo \"=== Downloads ===\"; ls -t ~/Downloads/ 2>/dev/null | grep -iE \"patricia|\\\\.mp4\" | head; echo \"=== Desktop ===\"; ls -t ~/Desktop/ 2>/dev/null | grep -iE \"patricia|\\\\.mp4\" | head)",
+      "Read(//c/Users/Dawensky/Downloads/**)",
+      "Read(//c/Users/Dawensky/**)"
     ],
     "additionalDirectories": [
       "d:\\Project\\Jarms\\.git"
