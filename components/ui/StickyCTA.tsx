@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Clapperboard, Globe } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { SITE } from "@/lib/data";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 /**
- * Mobile-only floating action bar (dual intent: video / website).
- * Appears once the visitor scrolls past the hero so the next move is always
- * one thumb-tap away; hides over the footer (which has its own CTA).
+ * Mobile-only floating action bar — a single, always-pinned CTA.
+ * Appears as soon as the visitor starts scrolling so the next move is one tap
+ * away; hides over the footer (which has its own CTA).
  */
 export function StickyCTA() {
   const [show, setShow] = useState(false);
@@ -47,26 +48,16 @@ export function StickyCTA() {
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0"
       }`}
     >
-      <div className="mx-auto flex max-w-md gap-2 rounded-full border border-ink/10 bg-white/90 p-1.5 shadow-[0_18px_40px_-12px_rgba(20,22,29,0.45)] backdrop-blur-md">
-        <a
-          href={SITE.whatsappVideo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-white transition-transform duration-150 ease-out-strong active:scale-[0.97]"
-        >
-          <Clapperboard className="h-4 w-4 text-gold" />
-          Get Video Now
-        </a>
-        <a
-          href={SITE.whatsappWeb}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gold px-4 py-3 text-sm font-semibold text-ink transition-transform duration-150 ease-out-strong active:scale-[0.97]"
-        >
-          <Globe className="h-4 w-4" />
-          Get Website Now
-        </a>
-      </div>
+      <a
+        href={SITE.whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mx-auto flex max-w-md items-center justify-center gap-2 rounded-full bg-gold px-5 py-4 text-base font-bold text-ink shadow-[0_18px_40px_-12px_rgba(20,22,29,0.5)] transition-transform duration-150 ease-out-strong active:scale-[0.98]"
+      >
+        <WhatsAppIcon className="h-5 w-5" />
+        Get Started Now
+        <ArrowUpRight className="h-5 w-5" />
+      </a>
     </div>
   );
 }

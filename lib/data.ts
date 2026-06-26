@@ -254,33 +254,63 @@ export const PLANS: Plan[] = [
 
 /* ---------------- Entry pricing (2 services, shown in hero + #pricing) ---------------- */
 
-export type PriceTier = {
+export type PriceOption = {
+  price: string;
+  detail?: string; // e.g. duration for videos
+  desc: string;
+};
+
+export type PriceService = {
   id: "video" | "web";
   name: string;
-  priceFrom: string; // headline "from" price
-  tagline: string;
-  bullets: string[];
+  priceFrom: string; // headline "from" price (hero pills)
+  options: PriceOption[];
   intent: "video" | "web"; // which WhatsApp conversation the CTA opens
 };
 
-export const PRICING: PriceTier[] = [
+export const PRICING: PriceService[] = [
   {
     id: "video",
     name: "Video",
     priceFrom: "$50",
-    tagline: "Scroll-stopping ads, reels & promos that sell.",
-    bullets: ["Hook-first edit", "Reels / TikTok / Shorts", "Fast delivery", "Revisions until you're happy"],
     intent: "video",
+    options: [
+      {
+        price: "$50",
+        detail: "30–40s max",
+        desc: "Quick promotions, business announcements, service offers & social media content.",
+      },
+      {
+        price: "$80",
+        detail: "30–60s max",
+        desc: "Event promos, product commercials, digital products & advanced ad campaigns.",
+      },
+    ],
   },
   {
     id: "web",
     name: "Website",
-    priceFrom: "$300",
-    tagline: "A fast, modern site built to turn visitors into buyers.",
-    bullets: ["Conversion-focused design", "Mobile-first & fast", "SEO basics", "Done-for-you in days"],
+    priceFrom: "$200",
     intent: "web",
+    options: [
+      { price: "$200", desc: "Portfolio, business presentation website, landing page." },
+      { price: "$300", desc: "Online store, service booking with payment, digital products store." },
+    ],
   },
 ];
+
+// optional paid add-on (offered on top of a website build)
+export const AI_UPGRADE = {
+  title: "Upgrade with AI integration",
+  blurb: "Make your site work for you — automate the busywork and book clients on autopilot.",
+  features: [
+    "Agentic workflows",
+    "Business process automation",
+    "Automated forms",
+    "Booking automation",
+    "And more…",
+  ],
+};
 
 /* ---------------- Trust: stats + client names ---------------- */
 
