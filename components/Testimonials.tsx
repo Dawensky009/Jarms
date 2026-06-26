@@ -24,7 +24,7 @@ export function Testimonials() {
   };
 
   return (
-    <section id="reviews" className="bg-white">
+    <section id="reviews" className="hidden bg-white lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         {/* header */}
         <Reveal>

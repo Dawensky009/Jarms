@@ -1,14 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Play, ArrowUpRight } from "lucide-react";
 import { TILES, type Tile } from "@/lib/data";
 import { Reveal } from "@/components/ui/Reveal";
 import { VideoModal } from "@/components/ui/VideoModal";
 import { useHoverPlay, posterFor } from "@/components/ui/useHoverPlay";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }) {
   const hover = useHoverPlay();
@@ -18,7 +15,7 @@ function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }
       onMouseEnter={hover.onMouseEnter}
       onMouseLeave={hover.onMouseLeave}
       aria-label={`Play ${tile.title} for ${tile.client}`}
-      className="group relative block aspect-video w-full cursor-pointer overflow-hidden rounded-3xl border border-ink/5 bg-night text-left transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-night/25"
+      className="group relative block aspect-[9/16] w-full cursor-pointer overflow-hidden rounded-3xl border border-ink/5 bg-night text-left transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-night/25 lg:aspect-video"
     >
       <video
         ref={hover.videoRef}
@@ -43,7 +40,7 @@ function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }
           <p className="font-display text-base font-bold uppercase tracking-tight text-white">{tile.title}</p>
           <p className="text-xs text-white/60">{tile.client}</p>
         </div>
-        <span className="flex h-10 w-10 flex-none translate-y-1 items-center justify-center rounded-full bg-gold text-ink opacity-0 shadow-lg transition-[opacity,transform] duration-300 ease-out-strong group-hover:translate-y-0 group-hover:opacity-100">
+        <span className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-gold text-ink shadow-lg transition-[opacity,transform] duration-300 ease-out-strong lg:translate-y-1 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
           <Play className="ml-0.5 h-4 w-4 fill-current" />
         </span>
       </div>
@@ -54,7 +51,6 @@ function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }
 export function Gallery() {
   const [active, setActive] = useState<Tile | null>(null);
   const [filter, setFilter] = useState<string>("All");
-  const reduce = useReducedMotion();
 
   // tabs derived from the real videos — never shows an empty category
   const categories = useMemo(
@@ -81,7 +77,7 @@ export function Gallery() {
               </h2>
             </div>
             <p className="max-w-xs text-sm text-ink-muted">
-              Filter by category. Hover to preview, tap to watch.
+              Swipe through our recent work — tap any to watch.
             </p>
           </div>
         </Reveal>
@@ -109,22 +105,16 @@ export function Gallery() {
           </div>
         </Reveal>
 
-        <motion.div layout className="mt-8 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {filtered.map((tile) => (
-              <motion.div
-                key={tile.id}
-                layout
-                initial={reduce ? false : { opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.96 }}
-                transition={{ duration: 0.3, ease }}
-              >
-                <GalleryTile tile={tile} onPlay={setActive} />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        {/* mobile = swipe carousel · desktop = grid */}
+        <div className="-mx-6 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mx-0 lg:grid lg:snap-none lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:px-0 lg:pb-0">
+          {filtered.map((tile) => (
+            <div key={tile.id} className="w-[64%] shrink-0 snap-center sm:w-[42%] lg:w-auto">
+              <GalleryTile tile={tile} onPlay={setActive} />
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-4 text-center text-xs text-ink-muted lg:hidden">Swipe to explore →</p>
       </div>
 
       <VideoModal
