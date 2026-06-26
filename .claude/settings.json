@@ -61,7 +61,9 @@
       "PowerShell(\"---\")",
       "Bash(cd /d/Project/Jarms 2>/dev/null; echo \"=== project search ===\"; find . -iname \"*patricia*\" -not -path \"./node_modules/*\" -not -path \"./.next/*\" 2>/dev/null; echo \"=== Ressources ===\"; ls Ressources/ 2>/dev/null; echo \"=== Downloads ===\"; ls -t ~/Downloads/ 2>/dev/null | grep -iE \"patricia|\\\\.mp4\" | head; echo \"=== Desktop ===\"; ls -t ~/Desktop/ 2>/dev/null | grep -iE \"patricia|\\\\.mp4\" | head)",
       "Read(//c/Users/Dawensky/Downloads/**)",
-      "Read(//c/Users/Dawensky/**)"
+      "Read(//c/Users/Dawensky/**)",
+      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" add -A)",
+      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" commit -m \"Rename Patricia gallery video to The Arc Beauty\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
     ],
     "additionalDirectories": [
       "d:\\Project\\Jarms\\.git"
