@@ -6,6 +6,7 @@ import { ArrowRight, Clapperboard, Globe, Star } from "lucide-react";
 import { PRICING, SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
 import { posterFor } from "@/components/ui/useHoverPlay";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { PricingCards } from "@/components/PricingCards";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -167,10 +168,6 @@ export function Hero() {
             <h2 className="font-display text-[clamp(1.9rem,8.5vw,2.7rem)] font-bold uppercase leading-[1.02] tracking-tight text-ink">
               Videos &amp; websites that push your brand <span className="text-gold-deep">to the next level.</span>
             </h2>
-            <p className="mx-auto mt-3 max-w-sm text-sm text-ink-muted">
-              Most content gets scrolled past. We make work people stop for — and buy
-              from. In days, not months.
-            </p>
           </motion.div>
 
           <motion.div
@@ -179,10 +176,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.12, ease }}
             className="mt-8 pb-12"
           >
-            <PricePills className="mb-4" />
-            <PrimaryCTA />
-            <SeeWorkButton className="mt-3 w-full" />
-            <TrustLine className="mt-5" />
+            <PricingCards />
+            <SeeWorkButton className="mt-6 w-full" />
+            <TrustLine className="mt-6" />
           </motion.div>
         </div>
 

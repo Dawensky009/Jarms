@@ -105,7 +105,7 @@ function ServiceCard({ service }: { service: Service }) {
 
 export function Services() {
   return (
-    <section id="services" className="bg-white">
+    <section id="services" className="hidden bg-white lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <Reveal>
           <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-deep">

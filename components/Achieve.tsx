@@ -57,7 +57,7 @@ function ServiceCard({ card }: { card: Card }) {
 
 export function Achieve() {
   return (
-    <section id="achieve" className="bg-white">
+    <section id="achieve" className="hidden bg-white lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         {/* header */}
         <Reveal>

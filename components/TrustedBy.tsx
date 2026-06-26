@@ -78,7 +78,7 @@ function CaseCard({ item }: { item: CaseItem }) {
 
 export function TrustedBy() {
   return (
-    <section className="bg-white">
+    <section className="hidden bg-white lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         {/* header */}
         <Reveal>
