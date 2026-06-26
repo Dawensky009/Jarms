@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Clapperboard, Globe, Star } from "lucide-react";
 import { PRICING, SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
 import { posterFor } from "@/components/ui/useHoverPlay";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -21,29 +22,31 @@ const STAT = TILES.find((t) => t.id === "makaya") ?? TILES[0];
 const AV1 = TILES.find((t) => t.id === "cdm") ?? TILES[1];
 const AV2 = TILES.find((t) => t.id === "anna") ?? TILES[2];
 
-/** Two clear, separate CTAs — the visitor taps the one matching their need. */
-function DualCTAs({ className = "" }: { className?: string }) {
+/** Single primary CTA — one tap to start, for either service. */
+function PrimaryCTA({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex gap-3 ${className}`}>
-      <a
-        href={SITE.whatsappVideo}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 py-3.5 text-sm font-semibold text-white transition-colors duration-200 ease-out-strong hover:bg-ink-soft active:scale-[0.98]"
-      >
-        <Clapperboard className="h-4 w-4 text-gold" />
-        Get a Video
-      </a>
-      <a
-        href={SITE.whatsappWeb}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gold px-4 py-3.5 text-sm font-semibold text-ink transition-colors duration-200 ease-out-strong hover:bg-gold-soft active:scale-[0.98]"
-      >
-        <Globe className="h-4 w-4" />
-        Get a Website
-      </a>
-    </div>
+    <a
+      href={SITE.whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-4 text-base font-bold text-ink transition-colors duration-200 ease-out-strong hover:bg-gold-soft active:scale-[0.98] ${className}`}
+    >
+      <WhatsAppIcon className="h-5 w-5" />
+      Get a Video / Website
+    </a>
+  );
+}
+
+/** Prioritised secondary action — a prominent outlined button, not a buried link. */
+function SeeWorkButton({ className = "" }: { className?: string }) {
+  return (
+    <a
+      href="#work"
+      className={`inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/15 px-5 py-3.5 text-base font-semibold text-ink transition-colors duration-200 ease-out-strong hover:border-ink hover:bg-ink hover:text-white ${className}`}
+    >
+      See our work
+      <ArrowRight className="h-4 w-4" />
+    </a>
   );
 }
 
@@ -177,14 +180,8 @@ export function Hero() {
             className="mt-8 pb-12"
           >
             <PricePills className="mb-4" />
-            <DualCTAs />
-            <a
-              href="#work"
-              className="mx-auto mt-4 flex w-fit items-center gap-1.5 text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline"
-            >
-              See our work
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            <PrimaryCTA />
+            <SeeWorkButton className="mt-3 w-full" />
             <TrustLine className="mt-5" />
           </motion.div>
         </div>
@@ -224,19 +221,13 @@ export function Hero() {
                 <CenterReel />
               </div>
               <PricePills />
-              <DualCTAs />
+              <PrimaryCTA />
             </div>
 
             {/* right */}
             <div className="flex flex-col justify-between gap-7">
               <Words>Agency</Words>
-              <a
-                href="#work"
-                className="inline-flex w-fit items-center gap-1.5 text-sm font-medium text-ink-soft underline-offset-4 transition-colors hover:text-ink hover:underline"
-              >
-                See our work
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              <SeeWorkButton className="w-fit" />
             </div>
           </motion.div>
 
