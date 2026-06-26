@@ -252,6 +252,36 @@ export const PLANS: Plan[] = [
   },
 ];
 
+/* ---------------- Entry pricing (2 services, shown in hero + #pricing) ---------------- */
+
+export type PriceTier = {
+  id: "video" | "web";
+  name: string;
+  priceFrom: string; // headline "from" price
+  tagline: string;
+  bullets: string[];
+  intent: "video" | "web"; // which WhatsApp conversation the CTA opens
+};
+
+export const PRICING: PriceTier[] = [
+  {
+    id: "video",
+    name: "Video",
+    priceFrom: "$50",
+    tagline: "Scroll-stopping ads, reels & promos that sell.",
+    bullets: ["Hook-first edit", "Reels / TikTok / Shorts", "Fast delivery", "Revisions until you're happy"],
+    intent: "video",
+  },
+  {
+    id: "web",
+    name: "Website",
+    priceFrom: "$300",
+    tagline: "A fast, modern site built to turn visitors into buyers.",
+    bullets: ["Conversion-focused design", "Mobile-first & fast", "SEO basics", "Done-for-you in days"],
+    intent: "web",
+  },
+];
+
 /* ---------------- Trust: stats + client names ---------------- */
 
 export type Stat = { value: number; suffix: string; label: string };

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Clapperboard, Globe, Star } from "lucide-react";
-import { SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
+import { PRICING, SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
 import { posterFor } from "@/components/ui/useHoverPlay";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -43,6 +43,28 @@ function DualCTAs({ className = "" }: { className?: string }) {
         <Globe className="h-4 w-4" />
         Get a Website
       </a>
+    </div>
+  );
+}
+
+/** Low-barrier price anchors — "Video from $50 · Website from $300". */
+function PricePills({ className = "" }: { className?: string }) {
+  const icons = { video: Clapperboard, web: Globe } as const;
+  return (
+    <div className={`flex flex-wrap items-center justify-center gap-2 ${className}`}>
+      {PRICING.map((p) => {
+        const Icon = icons[p.id];
+        return (
+          <span
+            key={p.id}
+            className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-xs font-semibold text-ink shadow-sm"
+          >
+            <Icon className="h-3.5 w-3.5 text-gold-deep" />
+            {p.name} <span className="font-normal text-ink-muted">from</span>
+            <span className="text-gold-deep">{p.priceFrom}</span>
+          </span>
+        );
+      })}
     </div>
   );
 }
@@ -128,7 +150,7 @@ export function Hero() {
 
       <div className="container-px relative z-10 mx-auto max-w-container">
         <h1 className="sr-only">
-          Jarms Marketing — a video &amp; web agency that turns attention into paying customers.
+          Jarms Marketing — videos &amp; websites that push your brand to the next level, from $50.
         </h1>
 
         {/* ===================== MOBILE (fold = hook → swipe → CTAs) ===================== */}
@@ -140,7 +162,7 @@ export function Hero() {
             className="text-center"
           >
             <h2 className="font-display text-[clamp(1.9rem,8.5vw,2.7rem)] font-bold uppercase leading-[1.02] tracking-tight text-ink">
-              Videos &amp; websites that turn views into <span className="text-gold-deep">paying customers.</span>
+              Videos &amp; websites that push your brand <span className="text-gold-deep">to the next level.</span>
             </h2>
             <p className="mx-auto mt-3 max-w-sm text-sm text-ink-muted">
               Most content gets scrolled past. We make work people stop for — and buy
@@ -154,6 +176,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.12, ease }}
             className="mt-8 pb-12"
           >
+            <PricePills className="mb-4" />
             <DualCTAs />
             <a
               href="#work"
@@ -162,7 +185,6 @@ export function Hero() {
               See our work
               <ArrowRight className="h-4 w-4" />
             </a>
-            <p className="mt-3 text-center text-xs text-ink-muted">Free quote in 24h · No obligation</p>
             <TrustLine className="mt-5" />
           </motion.div>
         </div>
@@ -191,16 +213,17 @@ export function Hero() {
                 &amp; Web
               </Words>
               <p className="self-end max-w-[19rem] text-sm leading-snug text-ink-muted">
-                Most content gets scrolled past. We make work people stop for — and
-                buy from.
+                Videos &amp; websites that push your brand to the next level — work people
+                stop for, and buy from.
               </p>
             </div>
 
-            {/* centrepiece (inline, no modal) — CTAs sit right under it */}
-            <div className="flex flex-col gap-5">
+            {/* centrepiece (inline, no modal) — prices + CTAs sit right under it */}
+            <div className="flex flex-col gap-4">
               <div className="aspect-[3/4] w-full">
                 <CenterReel />
               </div>
+              <PricePills />
               <DualCTAs />
             </div>
 

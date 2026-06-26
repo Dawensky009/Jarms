@@ -28,8 +28,9 @@ export function StickyCTA() {
     io?.observe(footer!);
 
     const update = () => {
-      const pastHero = window.scrollY > window.innerHeight * 0.75;
-      setShow(pastHero && !footerVisible);
+      // show as soon as the visitor starts scrolling — keep the CTA one tap away
+      const scrolled = window.scrollY > 120;
+      setShow(scrolled && !footerVisible);
     };
 
     update();
@@ -54,7 +55,7 @@ export function StickyCTA() {
           className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-white transition-transform duration-150 ease-out-strong active:scale-[0.97]"
         >
           <Clapperboard className="h-4 w-4 text-gold" />
-          Get a Video
+          Get Video Now
         </a>
         <a
           href={SITE.whatsappWeb}
@@ -63,7 +64,7 @@ export function StickyCTA() {
           className="flex flex-1 items-center justify-center gap-2 rounded-full bg-gold px-4 py-3 text-sm font-semibold text-ink transition-transform duration-150 ease-out-strong active:scale-[0.97]"
         >
           <Globe className="h-4 w-4" />
-          Get a Website
+          Get Website Now
         </a>
       </div>
     </div>
