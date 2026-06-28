@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Clapperboard, Globe, Star } from "lucide-react";
+import { ArrowRight, Clapperboard, Globe } from "lucide-react";
 import { PRICING, SITE, TILES, WEBSITES, type Tile, type Website } from "@/lib/data";
 import { posterFor } from "@/components/ui/useHoverPlay";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
@@ -123,19 +123,6 @@ function SiteCard({ site, className = "" }: { site: Website; className?: string 
   );
 }
 
-function TrustLine({ className = "" }: { className?: string }) {
-  return (
-    <div className={`flex items-center justify-center gap-2 text-xs text-white/55 ${className}`}>
-      <span className="flex">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" />
-        ))}
-      </span>
-      4.9 · Trusted by 90+ brands
-    </div>
-  );
-}
-
 const Words = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <span
     aria-hidden="true"
@@ -178,7 +165,6 @@ export function Hero() {
           >
             <PricingCards />
             <SeeWorkButton className="mt-6 w-full" />
-            <TrustLine className="mt-6" />
           </motion.div>
         </div>
 
