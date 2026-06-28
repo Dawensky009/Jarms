@@ -166,7 +166,7 @@ export function Hero() {
             className="text-center"
           >
             <h2 className="font-display text-[clamp(1.9rem,8.5vw,2.7rem)] font-bold uppercase leading-[1.02] tracking-tight text-white">
-              Videos &amp; websites that push your brand <span className="text-gold">to the next level.</span>
+<span className="text-gold">Videos &amp; websites</span> that push your brand <span className="text-gold">to the next level.</span>
             </h2>
           </motion.div>
 
