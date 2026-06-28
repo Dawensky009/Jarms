@@ -24,17 +24,17 @@ export function Testimonials() {
   };
 
   return (
-    <section id="reviews" className="hidden bg-white lg:block">
+    <section id="reviews" className="hidden bg-night lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         {/* header */}
         <Reveal>
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-deep">
+              <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold">
                 <Quote className="h-4 w-4 fill-current" />
                 Kind words
               </p>
-              <h2 className="mt-4 max-w-xl font-display text-section font-bold uppercase tracking-tight text-ink">
+              <h2 className="mt-4 max-w-xl font-display text-section font-bold uppercase tracking-tight text-white">
                 Loved by the brands we work with
               </h2>
             </div>
@@ -44,7 +44,7 @@ export function Testimonials() {
               <button
                 onClick={() => scroll(-1)}
                 aria-label="Previous testimonials"
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink transition-colors duration-200 ease-out-strong hover:border-gold hover:bg-gold active:scale-90"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition-colors duration-200 ease-out-strong hover:border-gold hover:bg-gold active:scale-90"
               >
                 <ArrowLeft className="h-4 w-4" />
               </button>
@@ -65,13 +65,13 @@ export function Testimonials() {
             {STATS.map((s) => (
               <div
                 key={s.label}
-                className="rounded-2xl border border-ink/10 bg-mist px-4 py-5 text-center"
+                className="rounded-2xl border border-white/10 bg-night-soft px-4 py-5 text-center"
               >
-                <p className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+                <p className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   {s.value}
-                  <span className="text-gold-deep">{s.suffix}</span>
+                  <span className="text-gold">{s.suffix}</span>
                 </p>
-                <p className="mt-1 text-xs font-medium text-ink-muted">{s.label}</p>
+                <p className="mt-1 text-xs font-medium text-white/55">{s.label}</p>
               </div>
             ))}
           </div>
@@ -85,14 +85,14 @@ export function Testimonials() {
           {TESTIMONIALS.map((t) => (
             <figure
               key={t.name}
-              className="flex w-[85%] shrink-0 snap-center flex-col rounded-4xl border border-ink/10 bg-mist p-7 sm:w-[420px] sm:p-9"
+              className="flex w-[85%] shrink-0 snap-center flex-col rounded-4xl border border-white/10 bg-night-soft p-7 sm:w-[420px] sm:p-9"
             >
               <div className="flex gap-1 text-gold">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="mt-5 flex-1 font-display text-lg font-semibold leading-snug tracking-tight text-ink sm:text-xl">
+              <blockquote className="mt-5 flex-1 font-display text-lg font-semibold leading-snug tracking-tight text-white sm:text-xl">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
@@ -100,8 +100,8 @@ export function Testimonials() {
                   {initials(t.name)}
                 </span>
                 <div>
-                  <p className="font-display font-bold text-ink">{t.name}</p>
-                  <p className="text-sm text-ink-muted">{t.role}</p>
+                  <p className="font-display font-bold text-white">{t.name}</p>
+                  <p className="text-sm text-white/55">{t.role}</p>
                 </div>
               </figcaption>
             </figure>

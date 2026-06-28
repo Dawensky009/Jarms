@@ -15,7 +15,7 @@ function GalleryTile({ tile, onPlay }: { tile: Tile; onPlay: (t: Tile) => void }
       onMouseEnter={hover.onMouseEnter}
       onMouseLeave={hover.onMouseLeave}
       aria-label={`Play ${tile.title} for ${tile.client}`}
-      className="group relative block aspect-[9/16] w-full cursor-pointer overflow-hidden rounded-3xl border border-ink/5 bg-night text-left transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-night/25 lg:aspect-video"
+      className="group relative block aspect-[9/16] w-full cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-night text-left transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-night/25 lg:aspect-video"
     >
       <video
         ref={hover.videoRef}
@@ -63,20 +63,20 @@ export function Gallery() {
   );
 
   return (
-    <section id="work" className="bg-white">
+    <section id="work" className="bg-night">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <Reveal>
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-deep">
+              <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold">
                 <ArrowUpRight className="h-4 w-4" />
                 Our work
               </p>
-              <h2 className="mt-4 font-display text-section font-bold uppercase tracking-tight text-ink">
+              <h2 className="mt-4 font-display text-section font-bold uppercase tracking-tight text-white">
                 Recent projects
               </h2>
             </div>
-            <p className="max-w-xs text-sm text-ink-muted">
+            <p className="max-w-xs text-sm text-white/55">
               Swipe through our recent work — tap any to watch.
             </p>
           </div>
@@ -94,8 +94,8 @@ export function Gallery() {
                   aria-pressed={activeTab}
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 ease-out-strong active:scale-95 ${
                     activeTab
-                      ? "bg-ink text-white"
-                      : "border border-ink/15 text-ink-soft hover:border-ink/30 hover:text-ink"
+                      ? "bg-gold text-ink"
+                      : "border border-white/15 text-white/75 hover:border-white/30 hover:text-white"
                   }`}
                 >
                   {cat}
@@ -114,7 +114,7 @@ export function Gallery() {
           ))}
         </div>
 
-        <p className="mt-4 text-center text-xs text-ink-muted lg:hidden">Swipe to explore →</p>
+        <p className="mt-4 text-center text-xs text-white/55 lg:hidden">Swipe to explore →</p>
       </div>
 
       <VideoModal

@@ -32,7 +32,7 @@ function ServiceCard({ service }: { service: Service }) {
 
   return (
     <RevealItem>
-      <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-white transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
+      <div className="flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-night transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
         {/* photo tied to the service */}
         <div className="relative aspect-[16/10] overflow-hidden bg-night">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -51,17 +51,17 @@ function ServiceCard({ service }: { service: Service }) {
         </div>
 
         <div className="flex flex-1 flex-col p-6 sm:p-7">
-          <h3 className="font-display text-xl font-bold uppercase tracking-tight text-ink sm:text-2xl">
-            {service.title} <span className="text-gold-deep">{service.highlight}</span>
+          <h3 className="font-display text-xl font-bold uppercase tracking-tight text-white sm:text-2xl">
+            {service.title} <span className="text-gold">{service.highlight}</span>
           </h3>
           {/* one scannable line — the full pitch lives in the accordion */}
-          <p className="mt-2 text-sm font-medium text-ink-soft">{service.short}</p>
+          <p className="mt-2 text-sm font-medium text-white/75">{service.short}</p>
 
           {/* accordion: details hidden until asked for */}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            className="mt-4 flex w-full items-center justify-between border-t border-ink/10 pt-4 text-sm font-semibold text-ink transition-colors hover:text-gold-deep"
+            className="mt-4 flex w-full items-center justify-between border-t border-white/10 pt-4 text-sm font-semibold text-white transition-colors hover:text-gold"
           >
             What&apos;s included
             <ChevronDown
@@ -74,12 +74,12 @@ function ServiceCard({ service }: { service: Service }) {
             }`}
           >
             <div className="overflow-hidden">
-              <p className="pt-3 text-sm text-ink-muted">{service.blurb}</p>
+              <p className="pt-3 text-sm text-white/55">{service.blurb}</p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {service.bullets.map((b) => (
                   <li
                     key={b}
-                    className="rounded-full border border-ink/10 bg-mist px-3 py-1 text-xs font-medium text-ink-soft"
+                    className="rounded-full border border-white/10 bg-night-soft px-3 py-1 text-xs font-medium text-white/75"
                   >
                     {b}
                   </li>
@@ -92,7 +92,7 @@ function ServiceCard({ service }: { service: Service }) {
             href={cta}
             target="_blank"
             rel="noopener noreferrer"
-            className="group/cta mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-ink transition-colors hover:text-gold-deep"
+            className="group/cta mt-6 inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-white transition-colors hover:text-gold"
           >
             {ctaLabel}
             <ArrowUpRight className="h-4 w-4 transition-transform duration-200 ease-out-strong group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
@@ -105,14 +105,14 @@ function ServiceCard({ service }: { service: Service }) {
 
 export function Services() {
   return (
-    <section id="services" className="hidden bg-white lg:block">
+    <section id="services" className="hidden bg-night lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <Reveal>
-          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold-deep">
+          <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-gold">
             <ArrowUpRight className="h-4 w-4" />
             Our services
           </p>
-          <h2 className="mt-4 max-w-3xl font-display text-section font-bold uppercase tracking-tight text-ink">
+          <h2 className="mt-4 max-w-3xl font-display text-section font-bold uppercase tracking-tight text-white">
             Everything you need to get seen
           </h2>
         </Reveal>

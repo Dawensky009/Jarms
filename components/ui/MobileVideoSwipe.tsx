@@ -46,7 +46,7 @@ export function MobileVideoSwipe({ tiles }: { tiles: Tile[] }) {
             key={tile.id}
             onClick={() => setActive(tile)}
             aria-label={`Play ${tile.title} for ${tile.client}`}
-            className="group relative aspect-[9/16] h-[clamp(16rem,40vh,22rem)] shrink-0 snap-center overflow-hidden rounded-3xl border border-ink/10 bg-night text-left"
+            className="group relative aspect-[9/16] h-[clamp(16rem,40vh,22rem)] shrink-0 snap-center overflow-hidden rounded-3xl border border-white/10 bg-night text-left"
           >
             <video
               src={tile.video}
@@ -63,7 +63,7 @@ export function MobileVideoSwipe({ tiles }: { tiles: Tile[] }) {
               {tile.category}
             </span>
             {/* play affordance — no hover on mobile, so keep it always visible */}
-            <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-ink shadow-lg">
+            <span className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-night/85 text-white shadow-lg">
               <Play className="ml-0.5 h-4 w-4 fill-current" />
             </span>
             <div className="absolute inset-x-0 bottom-0 p-3">

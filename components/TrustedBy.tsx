@@ -49,7 +49,7 @@ function ArrowChip() {
 function CaseCard({ item }: { item: CaseItem }) {
   return (
     <a href="#work" className={`group block ${item.down ? "lg:mt-24" : ""}`}>
-      <div className="relative block aspect-[3/4] w-full overflow-hidden rounded-3xl border border-ink/10 bg-night transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5">
+      <div className="relative block aspect-[3/4] w-full overflow-hidden rounded-3xl border border-white/10 bg-night transition-transform duration-300 ease-out-strong group-hover:-translate-y-1.5">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={item.image}
@@ -57,7 +57,7 @@ function CaseCard({ item }: { item: CaseItem }) {
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-strong group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-night/85 via-night/10 to-transparent" />
-        <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-ink">
+        <span className="absolute left-4 top-4 rounded-full bg-night/85 px-3 py-1 text-xs font-semibold text-white">
           {item.pill}
         </span>
         <div className="absolute inset-x-0 bottom-0 p-5">
@@ -67,7 +67,7 @@ function CaseCard({ item }: { item: CaseItem }) {
       </div>
 
       <div className="mt-4 flex items-center justify-between">
-        <p className="max-w-[11rem] font-display text-base font-bold uppercase leading-tight tracking-tight text-ink">
+        <p className="max-w-[11rem] font-display text-base font-bold uppercase leading-tight tracking-tight text-white">
           {item.label}
         </p>
         <ArrowChip />
@@ -78,12 +78,12 @@ function CaseCard({ item }: { item: CaseItem }) {
 
 export function TrustedBy() {
   return (
-    <section className="hidden bg-white lg:block">
+    <section className="hidden bg-night lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         {/* header */}
         <Reveal>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-            <h2 className="font-display text-section font-bold uppercase leading-[1.02] tracking-tight text-ink">
+            <h2 className="font-display text-section font-bold uppercase leading-[1.02] tracking-tight text-white">
               Trusted by
               <span className="mt-1 flex items-center gap-3">
                 <ArrowRight className="h-8 w-8 flex-none text-gold sm:h-10 sm:w-10" strokeWidth={2.5} />
@@ -91,10 +91,10 @@ export function TrustedBy() {
               </span>
             </h2>
             <p className="max-w-md text-lg leading-relaxed">
-              <span className="text-ink">
+              <span className="text-white">
                 We work with scrappy startups and established local brands alike —
               </span>{" "}
-              <span className="text-ink-muted">
+              <span className="text-white/55">
                 people who want real results, not just something that looks nice.
               </span>
             </p>
@@ -108,12 +108,12 @@ export function TrustedBy() {
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold text-gold">
               <ArrowRight className="h-4 w-4" />
             </span>
-            <p className="mt-5 max-w-[11rem] font-display text-base font-bold uppercase leading-tight tracking-tight text-ink">
+            <p className="mt-5 max-w-[11rem] font-display text-base font-bold uppercase leading-tight tracking-tight text-white">
               Startups &amp; Tech Companies
             </p>
             <a
               href="#work"
-              className="group relative mt-5 block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-ink/10 bg-night"
+              className="group relative mt-5 block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10 bg-night"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

@@ -7,7 +7,7 @@ const FOR = ["Creative & lifestyle brands", "Startups & local businesses", "Foun
 
 export function AgencyBlock() {
   return (
-    <section id="about" className="hidden bg-white lg:block">
+    <section id="about" className="hidden bg-night lg:block">
       <div className="container-px mx-auto max-w-container pb-20 sm:pb-28">
         <Reveal>
           <div className="grid items-center gap-8 overflow-hidden rounded-4xl bg-night p-6 text-white sm:p-10 lg:grid-cols-2 lg:gap-12 lg:p-14">

@@ -43,7 +43,7 @@ function SeeWorkButton({ className = "" }: { className?: string }) {
   return (
     <a
       href="#work"
-      className={`inline-flex items-center justify-center gap-2 rounded-full border-2 border-ink/15 px-5 py-3.5 text-base font-semibold text-ink transition-colors duration-200 ease-out-strong hover:border-ink hover:bg-ink hover:text-white ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/15 px-5 py-3.5 text-base font-semibold text-white transition-colors duration-200 ease-out-strong hover:border-white hover:bg-white hover:text-ink ${className}`}
     >
       See our work
       <ArrowRight className="h-4 w-4" />
@@ -61,11 +61,11 @@ function PricePills({ className = "" }: { className?: string }) {
         return (
           <span
             key={p.id}
-            className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1.5 text-xs font-semibold text-ink shadow-sm"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white"
           >
-            <Icon className="h-3.5 w-3.5 text-gold-deep" />
-            {p.name} <span className="font-normal text-ink-muted">from</span>
-            <span className="text-gold-deep">{p.priceFrom}</span>
+            <Icon className="h-3.5 w-3.5 text-gold" />
+            {p.name} <span className="font-normal text-white/55">from</span>
+            <span className="text-gold">{p.priceFrom}</span>
           </span>
         );
       })}
@@ -83,7 +83,7 @@ function CenterReel() {
     if (!reduce) v.play().catch(() => {});
   }, []);
   return (
-    <div className="relative h-full w-full overflow-hidden rounded-[2rem] border border-ink/10 bg-night shadow-[0_40px_90px_-40px_rgba(20,22,29,0.45)]">
+    <div className="relative h-full w-full overflow-hidden rounded-[2rem] border border-white/10 bg-night shadow-[0_40px_90px_-40px_rgba(20,22,29,0.45)]">
       <video
         ref={ref}
         src={CENTER.video}
@@ -106,7 +106,7 @@ function SiteCard({ site, className = "" }: { site: Website; className?: string 
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Visit ${site.name}`}
-      className={`group relative block overflow-hidden rounded-2xl border border-ink/10 bg-night shadow-xl shadow-ink/10 transition-transform duration-300 ease-out-strong hover:-translate-y-1 ${className}`}
+      className={`group relative block overflow-hidden rounded-2xl border border-white/10 bg-night shadow-xl shadow-ink/10 transition-transform duration-300 ease-out-strong hover:-translate-y-1 ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -125,7 +125,7 @@ function SiteCard({ site, className = "" }: { site: Website; className?: string 
 
 function TrustLine({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center justify-center gap-2 text-xs text-ink-muted ${className}`}>
+    <div className={`flex items-center justify-center gap-2 text-xs text-white/55 ${className}`}>
       <span className="flex">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" />
@@ -139,7 +139,7 @@ function TrustLine({ className = "" }: { className?: string }) {
 const Words = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
   <span
     aria-hidden="true"
-    className={`block font-display text-[clamp(2.6rem,7vw,5.5rem)] font-bold uppercase leading-[0.92] tracking-tight text-ink ${className}`}
+    className={`block font-display text-[clamp(2.6rem,7vw,5.5rem)] font-bold uppercase leading-[0.92] tracking-tight text-white ${className}`}
   >
     {children}
   </span>
@@ -147,9 +147,9 @@ const Words = ({ children, className = "" }: { children: React.ReactNode; classN
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-[#f4f3ef] pt-20 sm:pt-28">
+    <section id="top" className="relative overflow-hidden bg-night pt-20 sm:pt-28">
       {/* dotted "beautiful background" */}
-      <div className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,_rgba(20,22,29,0.08)_1.1px,_transparent_1.1px)] [background-size:22px_22px]" />
+      <div className="pointer-events-none absolute inset-0 [background-image:radial-gradient(circle,_rgba(255,255,255,0.06)_1.1px,_transparent_1.1px)] [background-size:22px_22px]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[28rem] bg-[radial-gradient(60%_50%_at_50%_0%,rgba(241,172,35,0.10),transparent_70%)]" />
 
       <div className="container-px relative z-10 mx-auto max-w-container">
@@ -165,8 +165,8 @@ export function Hero() {
             transition={{ duration: 0.6, ease }}
             className="text-center"
           >
-            <h2 className="font-display text-[clamp(1.9rem,8.5vw,2.7rem)] font-bold uppercase leading-[1.02] tracking-tight text-ink">
-              Videos &amp; websites that push your brand <span className="text-gold-deep">to the next level.</span>
+            <h2 className="font-display text-[clamp(1.9rem,8.5vw,2.7rem)] font-bold uppercase leading-[1.02] tracking-tight text-white">
+              Videos &amp; websites that push your brand <span className="text-gold">to the next level.</span>
             </h2>
           </motion.div>
 
@@ -188,7 +188,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease }}
-            className="mb-7 text-center text-sm font-semibold uppercase tracking-[0.22em] text-gold-deep"
+            className="mb-7 text-center text-sm font-semibold uppercase tracking-[0.22em] text-gold"
           >
             Get seen · Get remembered · Get paid
           </motion.p>
@@ -205,7 +205,7 @@ export function Hero() {
                 <br />
                 &amp; Web
               </Words>
-              <p className="self-end max-w-[19rem] text-sm leading-snug text-ink-muted">
+              <p className="self-end max-w-[19rem] text-sm leading-snug text-white/55">
                 Videos &amp; websites that push your brand to the next level — work people
                 stop for, and buy from.
               </p>
@@ -257,7 +257,7 @@ export function Hero() {
             </a>
 
             {/* trusted card */}
-            <div className="flex h-40 flex-col justify-between rounded-2xl border border-ink/10 bg-white p-4 shadow-xl shadow-ink/5">
+            <div className="flex h-40 flex-col justify-between rounded-2xl border border-white/10 bg-night p-4 shadow-xl shadow-ink/5">
               <div className="flex -space-x-2">
                 {[AV1, AV2, CENTER].map((t) => (
                   <span key={t.id} className="h-8 w-8 overflow-hidden rounded-full border-2 border-white">
@@ -266,7 +266,7 @@ export function Hero() {
                   </span>
                 ))}
               </div>
-              <p className="text-sm font-medium leading-snug text-ink">
+              <p className="text-sm font-medium leading-snug text-white">
                 Trusted by startups &amp; brands across many fields.
               </p>
             </div>

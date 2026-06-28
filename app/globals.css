@@ -24,8 +24,8 @@
   }
 
   body {
-    background-color: var(--paper);
-    color: var(--ink);
+    background-color: var(--dark);
+    color: #f4f4f6;
     font-family: var(--font-body);
   }
 
@@ -94,10 +94,10 @@ html.lenis body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--mist);
+  background: #0e1116;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d6d6db;
+  background: #3c4150;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {

@@ -10,7 +10,7 @@ type Status = "idle" | "loading" | "success" | "error";
 const BUDGETS = ["Under $1k", "$1k – $5k", "$5k – $15k", "$15k+"];
 
 const fieldClass =
-  "w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-ink placeholder:text-ink-muted/60 outline-none transition-colors focus:border-gold focus:ring-2 focus:ring-gold/25";
+  "w-full rounded-xl border border-white/15 bg-night px-4 py-3 text-ink placeholder:text-white/55/60 outline-none transition-colors focus:border-gold focus:ring-2 focus:ring-gold/25";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -43,22 +43,22 @@ export function ContactForm() {
   }
 
   return (
-    <section id="contact" className="bg-white">
+    <section id="contact" className="bg-night">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
               Get a quote
             </p>
-            <h2 className="mt-4 text-section font-bold text-ink">Tell us about your project.</h2>
-            <p className="mt-5 max-w-md text-ink-muted">
+            <h2 className="mt-4 text-section font-bold text-white">Tell us about your project.</h2>
+            <p className="mt-5 max-w-md text-white/55">
               Tell us what you need — we&apos;ll reply within one business day with
               ideas and a price. It&apos;s free, with no obligation.
             </p>
 
             <a
               href={`mailto:${SITE.email}`}
-              className="mt-8 inline-flex items-center gap-3 text-ink transition-colors hover:text-gold-deep"
+              className="mt-8 inline-flex items-center gap-3 text-ink transition-colors hover:text-gold"
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-gold">
                 <Mail className="h-5 w-5" />
@@ -73,7 +73,7 @@ export function ContactForm() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-ink/15 px-4 py-1.5 text-sm text-ink-soft transition-colors hover:border-gold hover:text-gold-deep"
+                  className="rounded-full border border-white/15 px-4 py-1.5 text-sm text-white/75 transition-colors hover:border-gold hover:text-gold"
                 >
                   {s.label}
                 </a>
@@ -84,17 +84,17 @@ export function ContactForm() {
           <Reveal direction="right">
             <form
               onSubmit={handleSubmit}
-              className="rounded-4xl border border-ink/10 bg-mist p-6 sm:p-8"
+              className="rounded-4xl border border-white/10 bg-night-soft p-6 sm:p-8"
             >
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-ink">
+                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-white">
                     Name
                   </label>
                   <input id="name" name="name" required className={fieldClass} placeholder="Jane Doe" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-ink">
+                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-white">
                     Email
                   </label>
                   <input id="email" name="email" type="email" required className={fieldClass} placeholder="jane@brand.com" />
@@ -103,7 +103,7 @@ export function ContactForm() {
 
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="projectType" className="mb-1.5 block text-sm font-medium text-ink">
+                  <label htmlFor="projectType" className="mb-1.5 block text-sm font-medium text-white">
                     Project type
                   </label>
                   <select id="projectType" name="projectType" className={fieldClass} defaultValue="">
@@ -119,7 +119,7 @@ export function ContactForm() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="budget" className="mb-1.5 block text-sm font-medium text-ink">
+                  <label htmlFor="budget" className="mb-1.5 block text-sm font-medium text-white">
                     Budget
                   </label>
                   <select id="budget" name="budget" className={fieldClass} defaultValue="">
@@ -136,7 +136,7 @@ export function ContactForm() {
               </div>
 
               <div className="mt-4">
-                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-ink">
+                <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-white">
                   Project details
                 </label>
                 <textarea

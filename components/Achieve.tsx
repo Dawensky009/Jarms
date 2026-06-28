@@ -16,10 +16,10 @@ function ServiceCard({ card }: { card: Card }) {
   return (
     <RevealItem>
       <div className="group">
-        <div className="relative flex h-[23rem] flex-col overflow-hidden rounded-3xl border border-ink/10 bg-mist p-5 transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
+        <div className="relative flex h-[23rem] flex-col overflow-hidden rounded-3xl border border-white/10 bg-night-soft p-5 transition-[transform,box-shadow] duration-300 ease-out-strong hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-ink/5">
           {/* top row */}
           <div className="flex items-center justify-between">
-            <span className="rounded-full border border-ink/15 bg-white px-3 py-1 text-xs font-medium text-ink-soft">
+            <span className="rounded-full border border-white/15 bg-night px-3 py-1 text-xs font-medium text-white/75">
               Service {card.n}
             </span>
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold text-ink transition-transform duration-300 ease-out-strong group-hover:rotate-45">
@@ -27,10 +27,10 @@ function ServiceCard({ card }: { card: Card }) {
             </span>
           </div>
 
-          <h3 className="mt-4 font-display text-lg font-bold uppercase leading-tight tracking-tight text-ink">
+          <h3 className="mt-4 font-display text-lg font-bold uppercase leading-tight tracking-tight text-white">
             {card.title}
           </h3>
-          <p className="mt-1.5 text-sm text-ink-muted">{card.desc}</p>
+          <p className="mt-1.5 text-sm text-white/55">{card.desc}</p>
           <div className="relative mt-3 flex-1 overflow-hidden rounded-2xl bg-night">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -43,7 +43,7 @@ function ServiceCard({ card }: { card: Card }) {
 
         {/* below the card */}
         <div className="mt-4 flex items-center justify-between">
-          <p className="font-display text-sm font-bold uppercase tracking-wide text-ink">
+          <p className="font-display text-sm font-bold uppercase tracking-wide text-white">
             {card.subs} Sub Services
           </p>
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold text-gold">
@@ -57,12 +57,12 @@ function ServiceCard({ card }: { card: Card }) {
 
 export function Achieve() {
   return (
-    <section id="achieve" className="hidden bg-white lg:block">
+    <section id="achieve" className="hidden bg-night lg:block">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         {/* header */}
         <Reveal>
           <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
-            <h2 className="font-display text-section font-bold uppercase leading-[1.02] tracking-tight text-ink">
+            <h2 className="font-display text-section font-bold uppercase leading-[1.02] tracking-tight text-white">
               What we help
               <span className="mt-1 flex items-center gap-3">
                 <ArrowRight className="h-8 w-8 flex-none text-gold sm:h-10 sm:w-10" strokeWidth={2.5} />
@@ -70,7 +70,7 @@ export function Achieve() {
               </span>
             </h2>
             <div className="max-w-md">
-              <p className="text-lg text-ink-muted">
+              <p className="text-lg text-white/55">
                 We don&apos;t just make things that look good — we build the videos and
                 websites that actually move your numbers.
               </p>

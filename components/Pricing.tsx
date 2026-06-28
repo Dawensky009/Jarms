@@ -5,16 +5,16 @@ import { PricingCards } from "@/components/PricingCards";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="bg-white">
+    <section id="pricing" className="bg-night">
       <div className="container-px mx-auto max-w-container py-20 sm:py-28">
         <Reveal className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold-deep">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">
             Simple, honest pricing
           </p>
-          <h2 className="mx-auto mt-4 max-w-2xl font-display text-section font-bold uppercase tracking-tight text-ink">
+          <h2 className="mx-auto mt-4 max-w-2xl font-display text-section font-bold uppercase tracking-tight text-white">
             Start small. Look big.
           </h2>
-          <p className="mx-auto mt-4 max-w-lg text-ink-muted">
+          <p className="mx-auto mt-4 max-w-lg text-white/55">
             No agency retainer, no surprises — just a clear price to get started.
           </p>
         </Reveal>
@@ -58,15 +58,15 @@ export function Pricing() {
         </Reveal>
 
         <Reveal>
-          <p className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-center text-sm text-ink-muted">
+          <p className="mx-auto mt-8 flex max-w-2xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-center text-sm text-white/55">
             <span className="inline-flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-gold-deep" /> No hidden fees
+              <Check className="h-4 w-4 text-gold" /> No hidden fees
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-gold-deep" /> Free quote in 24h
+              <Check className="h-4 w-4 text-gold" /> Free quote in 24h
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-gold-deep" /> You approve before you pay
+              <Check className="h-4 w-4 text-gold" /> You approve before you pay
             </span>
           </p>
         </Reveal>

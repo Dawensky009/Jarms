@@ -10,9 +10,9 @@ const sizes = "px-6 py-3 text-sm sm:text-base";
 
 const variants: Record<Variant, string> = {
   primary: "bg-gold text-ink hover:bg-gold-deep hover:text-white",
-  outline: "border border-ink/15 text-ink hover:border-gold hover:text-gold-deep bg-white",
+  outline: "border border-white/15 text-ink hover:border-gold hover:text-gold bg-night",
   dark: "bg-ink text-white hover:bg-ink-soft",
-  ghost: "text-ink-soft hover:text-gold-deep",
+  ghost: "text-white/75 hover:text-gold",
 };
 
 type CommonProps = {

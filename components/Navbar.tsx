@@ -21,7 +21,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50">
       <div
         className={`transition-colors duration-300 ${
-          scrolled ? "border-b border-ink/10 bg-white/80 backdrop-blur-md" : "border-b border-transparent bg-transparent"
+          scrolled ? "border-b border-white/10 bg-night/80 backdrop-blur-md" : "border-b border-transparent bg-transparent"
         }`}
       >
         <nav className="container-px mx-auto flex h-16 max-w-container items-center justify-between sm:h-[4.5rem]">
@@ -35,7 +35,7 @@ export function Navbar() {
               priority
               className="h-9 w-9 rounded-lg object-cover"
             />
-            <span className="font-display text-lg font-bold tracking-tight text-ink">Jarms</span>
+            <span className="font-display text-lg font-bold tracking-tight text-white">Jarms</span>
           </a>
 
           {/* centred nav */}
@@ -44,7 +44,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-ink-soft transition-colors hover:text-ink"
+                className="text-sm font-medium text-white/75 transition-colors hover:text-white"
               >
                 {link.label}
               </a>
@@ -67,7 +67,7 @@ export function Navbar() {
 
           {/* mobile toggle */}
           <button
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-ink/15 text-ink transition-transform duration-200 ease-out-strong active:scale-90 md:hidden"
+            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-white/15 text-white transition-transform duration-200 ease-out-strong active:scale-90 md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -79,14 +79,14 @@ export function Navbar() {
 
       {open && (
         <div className="container-px mx-auto max-w-container md:hidden">
-          <div className="mt-2 rounded-3xl border border-ink/10 bg-white p-4 shadow-xl shadow-ink/5">
+          <div className="mt-2 rounded-3xl border border-white/10 bg-night p-4 shadow-xl shadow-ink/5">
             <div className="flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-3 text-base text-ink-soft transition-colors hover:bg-mist hover:text-ink"
+                  className="rounded-xl px-3 py-3 text-base text-white/75 transition-colors hover:bg-night-soft hover:text-white"
                 >
                   {link.label}
                 </a>
