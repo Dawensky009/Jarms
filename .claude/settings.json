@@ -69,7 +69,11 @@
       "Read(//d/tmp/**)",
       "Bash(ffmpeg -y -ss 12 -i \"Ressources/video/GALA.mp4\" -frames:v 1 -vf \"scale=720:-1\" public/posters/gala.webp -loglevel error)",
       "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" commit -m \"Remove Dawensky Thermildort from the web portfolio\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" commit -m \"Correct email to jarmsmarketing@gmail.com\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" commit -m \"Correct email to jarmsmarketing@gmail.com\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Bash(ffmpeg -y -i \"public/videos/SUMMER SPLASH.mp4\" -vf \"scale=720:1280\" -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags +faststart public/videos/summer-splash.mp4 -loglevel error)",
+      "Bash(ffmpeg -y -ss 5 -i \"public/videos/SUMMER SPLASH.mp4\" -frames:v 1 -vf \"scale=720:-1\" public/posters/summer-splash.webp -loglevel error)",
+      "Bash(ffmpeg -y -i \"public/videos/BIRTHDAY  1.0.mp4\" -vf \"scale=720:1280\" -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k -movflags +faststart public/videos/birthday.mp4 -loglevel error)",
+      "Bash(ffmpeg -y -ss 5 -i \"public/videos/BIRTHDAY  1.0.mp4\" -frames:v 1 -vf \"scale=720:-1\" public/posters/birthday.webp -loglevel error)"
     ],
     "additionalDirectories": [
       "d:\\Project\\Jarms\\.git"

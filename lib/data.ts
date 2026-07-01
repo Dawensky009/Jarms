@@ -49,6 +49,8 @@ export const TILES: Tile[] = [
   { id: "star", title: "STARSHOP", client: "Fashion brand", category: "Fashion", video: "/videos/star-english.mp4", tone: "from-[#123b3a] to-[#0e1116]" },
   { id: "patricia", title: "The Arc Beauty", client: "Beauty & spa", category: "Commercial", video: "/videos/patricia.mp4", tone: "from-[#13314a] to-[#0e1116]" },
   { id: "cdm", title: "World Cup 26 Jersey", client: "Sportswear", category: "Commercial", video: "/videos/cdm.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
+  { id: "summer-splash", title: "Summer Splash", client: "Pool party", category: "Event", video: "/videos/summer-splash.mp4", tone: "from-[#13314a] to-[#0e1116]" },
+  { id: "birthday", title: "Birthday Bash", client: "Birthday party", category: "Event", video: "/videos/birthday.mp4", tone: "from-[#2a1840] to-[#0e1116]" },
   { id: "anna", title: "Anna BBQ", client: "Food brand", category: "Commercial", video: "/videos/anna-bbq.mp4", tone: "from-[#3a2c10] to-[#0e1116]" },
   { id: "astreya", title: "Astreya", client: "Brand film", category: "Brand", video: "/videos/astreya.mp4", tone: "from-[#13314a] to-[#0e1116]" },
   { id: "car", title: "Car Link Up", client: "Automotive", category: "Event", video: "/videos/car-link-up.mp4", tone: "from-[#2a1840] to-[#0e1116]" },
