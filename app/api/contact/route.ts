@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "hello@jarmsmarketing.com";
+const TO_EMAIL = process.env.CONTACT_TO_EMAIL || "jarmsmarketing@gmail.com";
 const FROM_EMAIL = process.env.CONTACT_FROM_EMAIL || "Jarms Website <onboarding@resend.dev>";
 
 function isEmail(value: unknown): value is string {

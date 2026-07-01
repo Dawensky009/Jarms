@@ -3,7 +3,7 @@
 export const SITE = {
   name: "Jarms Marketing",
   tagline: "AI-powered video & web for brands that refuse to blend in.",
-  email: "hello@jarmsmarketing.com",
+  email: "jarmsmarketing@gmail.com",
   // WhatsApp (international format, no +/spaces) — drives the main CTAs
   whatsapp: "18299745141",
   whatsappUrl:
