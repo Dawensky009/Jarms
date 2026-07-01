@@ -64,7 +64,10 @@
       "Read(//c/Users/Dawensky/**)",
       "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" add -A)",
       "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" commit -m \"Rename Patricia gallery video to The Arc Beauty\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
-      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" commit -m \"Pricing cards: shorten CTA to 'Book a call'\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")"
+      "PowerShell(git -C \"d:\\\\Project\\\\Jarms\" commit -m \"Pricing cards: shorten CTA to 'Book a call'\" -m \"Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>\")",
+      "Read(//tmp/**)",
+      "Read(//d/tmp/**)",
+      "Bash(ffmpeg -y -ss 12 -i \"Ressources/video/GALA.mp4\" -frames:v 1 -vf \"scale=720:-1\" public/posters/gala.webp -loglevel error)"
     ],
     "additionalDirectories": [
       "d:\\Project\\Jarms\\.git"

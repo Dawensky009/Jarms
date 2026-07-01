@@ -19,10 +19,8 @@ export const SITE = {
   // TODO: replace with the agency's real Calendly scheduling link
   calendlyUrl: "https://calendly.com/jarms-marketing/discovery-call",
   socials: [
-    { label: "Instagram", href: "https://instagram.com/" },
-    { label: "TikTok", href: "https://tiktok.com/" },
-    { label: "YouTube", href: "https://youtube.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com/" },
+    { label: "Instagram", href: "https://www.instagram.com/jarms_marketing/" },
+    { label: "TikTok", href: "https://www.tiktok.com/@jarms.marketing" },
   ],
 };
 
@@ -39,22 +37,23 @@ export type Tile = {
   id: string;
   title: string;
   client: string;
-  category: "Commercial" | "Product" | "Event" | "Corporate" | "Brand";
+  category: "Commercial" | "Product" | "Event" | "Corporate" | "Brand" | "Fashion";
   video: string; // local mp4 in /public/videos — shows first frame, plays in lightbox
   tone: string; // gradient backdrop behind the frame
 };
 
 // Real client work. The thumbnail shows the first frame; full video plays on click.
 export const TILES: Tile[] = [
+  { id: "gala", title: "GALA", client: "Red carpet event", category: "Event", video: "/videos/gala.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
+  { id: "shake-up", title: "Shake Up", client: "Drink brand", category: "Product", video: "/videos/shake-up.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
+  { id: "star", title: "STARSHOP", client: "Fashion brand", category: "Fashion", video: "/videos/star-english.mp4", tone: "from-[#123b3a] to-[#0e1116]" },
   { id: "patricia", title: "The Arc Beauty", client: "Beauty & spa", category: "Commercial", video: "/videos/patricia.mp4", tone: "from-[#13314a] to-[#0e1116]" },
+  { id: "cdm", title: "World Cup 26 Jersey", client: "Sportswear", category: "Commercial", video: "/videos/cdm.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
   { id: "anna", title: "Anna BBQ", client: "Food brand", category: "Commercial", video: "/videos/anna-bbq.mp4", tone: "from-[#3a2c10] to-[#0e1116]" },
   { id: "astreya", title: "Astreya", client: "Brand film", category: "Brand", video: "/videos/astreya.mp4", tone: "from-[#13314a] to-[#0e1116]" },
   { id: "car", title: "Car Link Up", client: "Automotive", category: "Event", video: "/videos/car-link-up.mp4", tone: "from-[#2a1840] to-[#0e1116]" },
-  { id: "cdm", title: "CDM", client: "Commercial spot", category: "Commercial", video: "/videos/cdm.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
-  { id: "star", title: "Star English", client: "Education", category: "Corporate", video: "/videos/star-english.mp4", tone: "from-[#123b3a] to-[#0e1116]" },
   { id: "makaya", title: "Makaya", client: "Brand film", category: "Brand", video: "/videos/makaya.mp4", tone: "from-[#2a1840] to-[#0e1116]" },
   { id: "pastor-jv", title: "Pastor JV", client: "Auto consulting", category: "Corporate", video: "/videos/pastor-jv.mp4", tone: "from-[#13314a] to-[#0e1116]" },
-  { id: "shake-up", title: "Shake Up", client: "Drink brand", category: "Product", video: "/videos/shake-up.mp4", tone: "from-[#3a1220] to-[#0e1116]" },
   { id: "blind-eye", title: "The Blind Eye", client: "Brand film", category: "Brand", video: "/videos/the-blind-eye.mp4", tone: "from-[#3a2c10] to-[#0e1116]" },
 ];
 
