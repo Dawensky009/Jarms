@@ -43,10 +43,10 @@ function SeeWorkButton({ className = "" }: { className?: string }) {
   return (
     <a
       href="#work"
-      className={`inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/15 px-5 py-3.5 text-base font-semibold text-white transition-colors duration-200 ease-out-strong hover:border-white hover:bg-white hover:text-ink ${className}`}
+      className={`group inline-flex items-center justify-center gap-2 rounded-full border-2 border-gold/60 px-5 py-4 text-base font-semibold text-gold shadow-[0_14px_36px_-12px_rgba(241,172,35,0.45)] transition-[background-color,color,border-color,transform] duration-200 ease-out-strong hover:border-gold hover:bg-gold hover:text-ink active:scale-[0.98] ${className}`}
     >
       See our work
-      <ArrowRight className="h-4 w-4" />
+      <ArrowRight className="h-4 w-4 transition-transform duration-200 ease-out-strong group-hover:translate-x-1" />
     </a>
   );
 }
