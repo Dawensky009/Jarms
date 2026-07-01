@@ -162,12 +162,6 @@ export const WEBSITES: Website[] = [
     url: "https://juicylicious.vercel.app/",
     image: "/sites/juicylicious.jpeg",
   },
-  {
-    name: "Dawensky Thermildort",
-    tag: "Personal portfolio · Analyst",
-    url: "https://dt-eight-kappa.vercel.app/",
-    image: "/sites/dt-portfolio.jpeg",
-  },
 ];
 
 /* ---------------- How it works (4 coloured steps) ---------------- */

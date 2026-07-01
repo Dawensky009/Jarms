@@ -218,7 +218,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease }}
-            className="relative z-10 mt-10 grid grid-cols-[1.3fr_1fr_0.8fr_0.8fr] items-end gap-4 pb-16"
+            className="relative z-10 mt-10 grid grid-cols-[1.3fr_1fr_1fr] items-end gap-4 pb-16"
           >
             {/* stat card (links to work — no modal) */}
             <a
@@ -257,9 +257,8 @@ export function Hero() {
               </p>
             </div>
 
-            {/* websites we built — photos */}
+            {/* website we built — photo */}
             <SiteCard site={WEBSITES[0]} className="h-40" />
-            <SiteCard site={WEBSITES[1]} className="h-40" />
           </motion.div>
         </div>
       </div>
