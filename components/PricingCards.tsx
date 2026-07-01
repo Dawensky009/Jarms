@@ -39,7 +39,7 @@ function Card({ service }: { service: PriceService }) {
         rel="noopener noreferrer"
         className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-4 text-sm font-bold text-ink shadow-lg shadow-gold/25 transition-[background-color,transform] duration-200 ease-out-strong hover:bg-gold-soft active:scale-[0.98]"
       >
-        Book a {service.name} Call
+        Book a call
         <ArrowUpRight className="h-4 w-4" />
       </a>
     </div>
