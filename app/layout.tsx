@@ -3,6 +3,7 @@ import "./globals.css";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { Analytics } from "@vercel/analytics/next";
 
 const siteUrl = "https://jarmsmarketing.com";
 
@@ -62,6 +63,7 @@ export default function RootLayout({
         <CustomCursor />
         {children}
         <WhatsAppFab />
+        <Analytics />
       </body>
     </html>
   );
